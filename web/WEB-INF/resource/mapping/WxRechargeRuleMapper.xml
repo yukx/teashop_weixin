@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.WxRechargeRuleMapper">
+    <resultMap id="BaseResultMap" type="com.dodonew.model.WxRechargeRule">
+        <id column="T_rechargeId" jdbcType="INTEGER" property="rechargeid"/>
+        <result column="T_rechargeNum" jdbcType="DOUBLE" property="rechargenum"/>
+        <result column="T_giveNumber" jdbcType="DOUBLE" property="givenumber"/>
+        <result column="T_remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="T_storeId" jdbcType="VARCHAR" property="storeid"/>
+        <result column="T_discountShowPrice" jdbcType="INTEGER" property="discountshowprice"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    T.rechargeId as T_rechargeId, T.rechargeNum as T_rechargeNum, T.giveNumber as T_giveNumber, 
+    T.remark as T_remark, T.storeId as T_storeId, T.discountShowPrice as T_discountShowPrice
+  </sql>
+
+    <select id="queryPayRule" parameterType="com.dodonew.model.WxRechargeRule" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM WX_RechargeRule T
+        WHERE T.storeId=#{storeid} AND T.rechargenum+T.giveNumber*100+#{balance}>=#{payAmount}
+        order by T.rechargeId desc LIMIT 0,2
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from WX_RechargeRule T
+        where T.rechargeId = #{rechargeid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from WX_RechargeRule
+    where rechargeId = #{rechargeid,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.dodonew.model.WxRechargeRule">
+    insert into WX_RechargeRule (rechargeId, rechargeNum, giveNumber, 
+      remark, storeId, discountShowPrice
+      )
+    values (#{rechargeid,jdbcType=INTEGER}, #{rechargenum,jdbcType=DOUBLE}, #{givenumber,jdbcType=DOUBLE}, 
+      #{remark,jdbcType=VARCHAR}, #{storeid,jdbcType=INTEGER}, #{discountshowprice,jdbcType=INTEGER}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.dodonew.model.WxRechargeRule">
+        insert into WX_RechargeRule
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="rechargeid != null">
+                rechargeId,
+            </if>
+            <if test="rechargenum != null">
+                rechargeNum,
+            </if>
+            <if test="givenumber != null">
+                giveNumber,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="storeid != null">
+                storeId,
+            </if>
+            <if test="discountshowprice != null">
+                discountShowPrice,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="rechargeid != null">
+                #{rechargeid,jdbcType=INTEGER},
+            </if>
+            <if test="rechargenum != null">
+                #{rechargenum,jdbcType=DOUBLE},
+            </if>
+            <if test="givenumber != null">
+                #{givenumber,jdbcType=DOUBLE},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="storeid != null">
+                #{storeid,jdbcType=INTEGER},
+            </if>
+            <if test="discountshowprice != null">
+                #{discountshowprice,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dodonew.model.WxRechargeRule">
+        update WX_RechargeRule
+        <set>
+            <if test="rechargenum != null">
+                rechargeNum = #{rechargenum,jdbcType=DOUBLE},
+            </if>
+            <if test="givenumber != null">
+                giveNumber = #{givenumber,jdbcType=DOUBLE},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="storeid != null">
+                storeId = #{storeid,jdbcType=INTEGER},
+            </if>
+            <if test="discountshowprice != null">
+                discountShowPrice = #{discountshowprice,jdbcType=INTEGER},
+            </if>
+        </set>
+        where rechargeId = #{rechargeid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dodonew.model.WxRechargeRule">
+    update WX_RechargeRule
+    set rechargeNum = #{rechargenum,jdbcType=DOUBLE},
+      giveNumber = #{givenumber,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR},
+      storeId = #{storeid,jdbcType=INTEGER},
+      discountShowPrice = #{discountshowprice,jdbcType=INTEGER}
+    where rechargeId = #{rechargeid,jdbcType=INTEGER}
+  </update>
+</mapper>

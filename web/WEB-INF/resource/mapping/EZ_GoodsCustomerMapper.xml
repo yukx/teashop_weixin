@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.EZ_GoodsCustomerMapper">
+  <resultMap id="BaseResultMap" type="com.dodonew.model.EZ_GoodsCustomer">
+    <id column="goodsCustomerId" jdbcType="BIGINT" property="goodsCustomerId" />
+    <result column="manuName" jdbcType="VARCHAR" property="manuName" />
+    <result column="tradeMark" jdbcType="VARCHAR" property="tradeMark" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="sd" jdbcType="VARCHAR" property="sd" />
+    <result column="gd" jdbcType="VARCHAR" property="gd" />
+    <result column="kd" jdbcType="VARCHAR" property="kd" />
+    <result column="ycd" jdbcType="VARCHAR" property="ycd" />
+    <result column="engName" jdbcType="VARCHAR" property="engName" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="storeId" jdbcType="VARCHAR" property="storeId" />
+    <result column="goodsId" jdbcType="BIGINT" property="goodsId" />
+    <result column="crateTime" jdbcType="TIMESTAMP" property="crateTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="goodsTypeCustomerId" jdbcType="BIGINT" property="goodsTypeCustomerId" />
+    <result column="goodsName" jdbcType="VARCHAR" property="goodsName" />
+    <result column="firstWords" jdbcType="VARCHAR" property="firstWords" />
+    <result column="isDiscount" jdbcType="TINYINT" property="isDiscount" />
+    <result column="isCoupon" jdbcType="TINYINT" property="isCoupon" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    goodsCustomerId, manuName, tradeMark, img, sd, gd, kd, ycd, engName, note, storeId, 
+    goodsId, crateTime, updateTime, status, goodsTypeCustomerId, goodsName, firstWords, 
+    isDiscount, isCoupon
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from EZ_GoodsCustomer
+    where goodsCustomerId = #{goodsCustomerId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from EZ_GoodsCustomer
+    where goodsCustomerId = #{goodsCustomerId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.dodonew.model.EZ_GoodsCustomer">
+    insert into EZ_GoodsCustomer (goodsCustomerId, manuName, tradeMark, 
+      img, sd, gd, kd, 
+      ycd, engName, note, 
+      storeId, goodsId, crateTime, 
+      updateTime, status, goodsTypeCustomerId, 
+      goodsName, firstWords, isDiscount, 
+      isCoupon)
+    values (#{goodsCustomerId,jdbcType=BIGINT}, #{manuName,jdbcType=VARCHAR}, #{tradeMark,jdbcType=VARCHAR}, 
+      #{img,jdbcType=VARCHAR}, #{sd,jdbcType=VARCHAR}, #{gd,jdbcType=VARCHAR}, #{kd,jdbcType=VARCHAR}, 
+      #{ycd,jdbcType=VARCHAR}, #{engName,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
+      #{storeId,jdbcType=VARCHAR}, #{goodsId,jdbcType=BIGINT}, #{crateTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, #{goodsTypeCustomerId,jdbcType=BIGINT}, 
+      #{goodsName,jdbcType=VARCHAR}, #{firstWords,jdbcType=VARCHAR}, #{isDiscount,jdbcType=TINYINT}, 
+      #{isCoupon,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dodonew.model.EZ_GoodsCustomer">
+    insert into EZ_GoodsCustomer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsCustomerId != null">
+        goodsCustomerId,
+      </if>
+      <if test="manuName != null">
+        manuName,
+      </if>
+      <if test="tradeMark != null">
+        tradeMark,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="sd != null">
+        sd,
+      </if>
+      <if test="gd != null">
+        gd,
+      </if>
+      <if test="kd != null">
+        kd,
+      </if>
+      <if test="ycd != null">
+        ycd,
+      </if>
+      <if test="engName != null">
+        engName,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="storeId != null">
+        storeId,
+      </if>
+      <if test="goodsId != null">
+        goodsId,
+      </if>
+      <if test="crateTime != null">
+        crateTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="goodsTypeCustomerId != null">
+        goodsTypeCustomerId,
+      </if>
+      <if test="goodsName != null">
+        goodsName,
+      </if>
+      <if test="firstWords != null">
+        firstWords,
+      </if>
+      <if test="isDiscount != null">
+        isDiscount,
+      </if>
+      <if test="isCoupon != null">
+        isCoupon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsCustomerId != null">
+        #{goodsCustomerId,jdbcType=BIGINT},
+      </if>
+      <if test="manuName != null">
+        #{manuName,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeMark != null">
+        #{tradeMark,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="sd != null">
+        #{sd,jdbcType=VARCHAR},
+      </if>
+      <if test="gd != null">
+        #{gd,jdbcType=VARCHAR},
+      </if>
+      <if test="kd != null">
+        #{kd,jdbcType=VARCHAR},
+      </if>
+      <if test="ycd != null">
+        #{ycd,jdbcType=VARCHAR},
+      </if>
+      <if test="engName != null">
+        #{engName,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="crateTime != null">
+        #{crateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="goodsTypeCustomerId != null">
+        #{goodsTypeCustomerId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstWords != null">
+        #{firstWords,jdbcType=VARCHAR},
+      </if>
+      <if test="isDiscount != null">
+        #{isDiscount,jdbcType=TINYINT},
+      </if>
+      <if test="isCoupon != null">
+        #{isCoupon,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dodonew.model.EZ_GoodsCustomer">
+    update EZ_GoodsCustomer
+    <set>
+      <if test="manuName != null">
+        manuName = #{manuName,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeMark != null">
+        tradeMark = #{tradeMark,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="sd != null">
+        sd = #{sd,jdbcType=VARCHAR},
+      </if>
+      <if test="gd != null">
+        gd = #{gd,jdbcType=VARCHAR},
+      </if>
+      <if test="kd != null">
+        kd = #{kd,jdbcType=VARCHAR},
+      </if>
+      <if test="ycd != null">
+        ycd = #{ycd,jdbcType=VARCHAR},
+      </if>
+      <if test="engName != null">
+        engName = #{engName,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        storeId = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null">
+        goodsId = #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="crateTime != null">
+        crateTime = #{crateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="goodsTypeCustomerId != null">
+        goodsTypeCustomerId = #{goodsTypeCustomerId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null">
+        goodsName = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstWords != null">
+        firstWords = #{firstWords,jdbcType=VARCHAR},
+      </if>
+      <if test="isDiscount != null">
+        isDiscount = #{isDiscount,jdbcType=TINYINT},
+      </if>
+      <if test="isCoupon != null">
+        isCoupon = #{isCoupon,jdbcType=TINYINT},
+      </if>
+    </set>
+    where goodsCustomerId = #{goodsCustomerId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dodonew.model.EZ_GoodsCustomer">
+    update EZ_GoodsCustomer
+    set manuName = #{manuName,jdbcType=VARCHAR},
+      tradeMark = #{tradeMark,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      sd = #{sd,jdbcType=VARCHAR},
+      gd = #{gd,jdbcType=VARCHAR},
+      kd = #{kd,jdbcType=VARCHAR},
+      ycd = #{ycd,jdbcType=VARCHAR},
+      engName = #{engName,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      storeId = #{storeId,jdbcType=VARCHAR},
+      goodsId = #{goodsId,jdbcType=BIGINT},
+      crateTime = #{crateTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT},
+      goodsTypeCustomerId = #{goodsTypeCustomerId,jdbcType=BIGINT},
+      goodsName = #{goodsName,jdbcType=VARCHAR},
+      firstWords = #{firstWords,jdbcType=VARCHAR},
+      isDiscount = #{isDiscount,jdbcType=TINYINT},
+      isCoupon = #{isCoupon,jdbcType=TINYINT}
+    where goodsCustomerId = #{goodsCustomerId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.BiBillMapper">
+  <resultMap id="BaseResultMap" type="com.dodonew.model.BiBill">
+    <id column="T_storeId" jdbcType="INTEGER" property="storeid" />
+    <id column="T_BillID" jdbcType="CHAR" property="billid" />
+    <result column="T_TableID" jdbcType="CHAR" property="tableid" />
+    <result column="T_SubTableID" jdbcType="INTEGER" property="subtableid" />
+    <result column="T_TableName" jdbcType="CHAR" property="tablename" />
+    <result column="T_TableFullName" jdbcType="CHAR" property="tablefullname" />
+    <result column="T_TableAreaID" jdbcType="CHAR" property="tableareaid" />
+    <result column="T_TableAreaName" jdbcType="CHAR" property="tableareaname" />
+    <result column="T_TableTypeID" jdbcType="CHAR" property="tabletypeid" />
+    <result column="T_TableTypeName" jdbcType="CHAR" property="tabletypename" />
+    <result column="T_MemberID" jdbcType="CHAR" property="memberid" />
+    <result column="T_MemberCardID" jdbcType="CHAR" property="membercardid" />
+    <result column="T_MemberName" jdbcType="CHAR" property="membername" />
+    <result column="T_PeopleCount" jdbcType="INTEGER" property="peoplecount" />
+    <result column="T_ChargePersonID" jdbcType="CHAR" property="chargepersonid" />
+    <result column="T_ChargePerson" jdbcType="CHAR" property="chargeperson" />
+    <result column="T_CreateTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="T_CreatePersonID" jdbcType="CHAR" property="createpersonid" />
+    <result column="T_CreatePerson" jdbcType="CHAR" property="createperson" />
+    <result column="T_IsCheckOuting" jdbcType="BIT" property="ischeckouting" />
+    <result column="T_CheckOutTime" jdbcType="TIMESTAMP" property="checkouttime" />
+    <result column="T_CheckOutPersonID" jdbcType="CHAR" property="checkoutpersonid" />
+    <result column="T_CheckOutPerson" jdbcType="CHAR" property="checkoutperson" />
+    <result column="T_CheckOutNull" jdbcType="BIT" property="checkoutnull" />
+    <result column="T_DeleteTime" jdbcType="VARCHAR" property="deletetime" />
+    <result column="T_DeletePersonID" jdbcType="CHAR" property="deletepersonid" />
+    <result column="T_DeletePerson" jdbcType="CHAR" property="deleteperson" />
+    <result column="T_DiscountID" jdbcType="CHAR" property="discountid" />
+    <result column="T_DiscountName" jdbcType="CHAR" property="discountname" />
+    <result column="T_DiscountRate" jdbcType="REAL" property="discountrate" />
+    <result column="T_DiscountPersonID" jdbcType="CHAR" property="discountpersonid" />
+    <result column="T_DiscountPerson" jdbcType="CHAR" property="discountperson" />
+    <result column="T_SumOfConsume" jdbcType="DOUBLE" property="sumofconsume" />
+    <result column="T_ServiceRate" jdbcType="REAL" property="servicerate" />
+    <result column="T_SumOfService" jdbcType="DOUBLE" property="sumofservice" />
+    <result column="T_SumForDiscount" jdbcType="DOUBLE" property="sumfordiscount" />
+    <result column="T_SumOfCarry" jdbcType="REAL" property="sumofcarry" />
+    <result column="T_SumToPay" jdbcType="DOUBLE" property="sumtopay" />
+    <result column="T_SumPaid" jdbcType="DOUBLE" property="sumpaid" />
+    <result column="T_SumInCash" jdbcType="REAL" property="sumincash" />
+    <result column="T_SumOfInvoice" jdbcType="REAL" property="sumofinvoice" />
+    <result column="T_SumOfCashPaid" jdbcType="REAL" property="sumofcashpaid" />
+    <result column="T_SumOfCashBack" jdbcType="REAL" property="sumofcashback" />
+    <result column="T_BillDate" jdbcType="TIMESTAMP" property="billdate" />
+    <result column="T_BillPeriod" jdbcType="CHAR" property="billperiod" />
+    <result column="T_BillYear" jdbcType="INTEGER" property="billyear" />
+    <result column="T_BillMonth" jdbcType="INTEGER" property="billmonth" />
+    <result column="T_BillDay" jdbcType="INTEGER" property="billday" />
+    <result column="T_IsArchived" jdbcType="BIT" property="isarchived" />
+    <result column="T_IsUploaded" jdbcType="BIT" property="isuploaded" />
+    <result column="T_IsDeleted" jdbcType="BIT" property="isdeleted" />
+    <result column="T_PrintCount" jdbcType="INTEGER" property="printcount" />
+    <result column="T_ReduceMantissa" jdbcType="REAL" property="reducemantissa" />
+    <result column="T_BranchID" jdbcType="VARCHAR" property="branchid" />
+    <result column="T_BranchName" jdbcType="CHAR" property="branchname" />
+    <result column="T_WorkStationID" jdbcType="CHAR" property="workstationid" />
+    <result column="T_WorkStationName" jdbcType="CHAR" property="workstationname" />
+    <result column="T_Remark" jdbcType="CHAR" property="remark" />
+    <result column="T_OriginalID" jdbcType="CHAR" property="originalid" />
+    <result column="T_ShiftID" jdbcType="CHAR" property="shiftid" />
+    <result column="T_InsertTime" jdbcType="TIMESTAMP" property="inserttime" />
+    <result column="T_SubjectID" jdbcType="VARCHAR" property="subjectid" />
+    <result column="T_SubjectName" jdbcType="VARCHAR" property="subjectname" />
+    <result column="T_AtLeaseCost" jdbcType="REAL" property="atleasecost" />
+    <result column="T_devId" jdbcType="VARCHAR" property="devid" />
+    <result column="T_billFrom" jdbcType="INTEGER" property="billfrom" />
+    <result column="T_ddnBillId" jdbcType="VARCHAR" property="ddnbillid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    T.storeId as T_storeId, T.BillID as T_BillID, T.TableID as T_TableID, T.SubTableID as T_SubTableID, 
+    T.TableName as T_TableName, T.TableFullName as T_TableFullName, T.TableAreaID as T_TableAreaID, 
+    T.TableAreaName as T_TableAreaName, T.TableTypeID as T_TableTypeID, T.TableTypeName as T_TableTypeName, 
+    T.MemberID as T_MemberID, T.MemberCardID as T_MemberCardID, T.MemberName as T_MemberName, 
+    T.PeopleCount as T_PeopleCount, T.ChargePersonID as T_ChargePersonID, T.ChargePerson as T_ChargePerson, 
+    T.CreateTime as T_CreateTime, T.CreatePersonID as T_CreatePersonID, T.CreatePerson as T_CreatePerson, 
+    T.IsCheckOuting as T_IsCheckOuting, T.CheckOutTime as T_CheckOutTime, T.CheckOutPersonID as T_CheckOutPersonID, 
+    T.CheckOutPerson as T_CheckOutPerson, T.CheckOutNull as T_CheckOutNull, T.DeleteTime as T_DeleteTime, 
+    T.DeletePersonID as T_DeletePersonID, T.DeletePerson as T_DeletePerson, T.DiscountID as T_DiscountID, 
+    T.DiscountName as T_DiscountName, T.DiscountRate as T_DiscountRate, T.DiscountPersonID as T_DiscountPersonID, 
+    T.DiscountPerson as T_DiscountPerson, T.SumOfConsume as T_SumOfConsume, T.ServiceRate as T_ServiceRate, 
+    T.SumOfService as T_SumOfService, T.SumForDiscount as T_SumForDiscount, T.SumOfCarry as T_SumOfCarry, 
+    T.SumToPay as T_SumToPay, T.SumPaid as T_SumPaid, T.SumInCash as T_SumInCash, T.SumOfInvoice as T_SumOfInvoice, 
+    T.SumOfCashPaid as T_SumOfCashPaid, T.SumOfCashBack as T_SumOfCashBack, T.BillDate as T_BillDate, 
+    T.BillPeriod as T_BillPeriod, T.BillYear as T_BillYear, T.BillMonth as T_BillMonth, 
+    T.BillDay as T_BillDay, T.IsArchived as T_IsArchived, T.IsUploaded as T_IsUploaded, 
+    T.IsDeleted as T_IsDeleted, T.PrintCount as T_PrintCount, T.ReduceMantissa as T_ReduceMantissa, 
+    T.BranchID as T_BranchID, T.BranchName as T_BranchName, T.WorkStationID as T_WorkStationID, 
+    T.WorkStationName as T_WorkStationName, T.Remark as T_Remark, T.OriginalID as T_OriginalID, 
+    T.ShiftID as T_ShiftID, T.InsertTime as T_InsertTime, T.SubjectID as T_SubjectID, 
+    T.SubjectName as T_SubjectName, T.AtLeaseCost as T_AtLeaseCost, T.devId as T_devId, 
+    T.billFrom as T_billFrom, T.ddnBillId as T_ddnBillId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.dodonew.model.BiBillKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bi_Bill T
+    where T.storeId = #{storeid,jdbcType=INTEGER}
+      and T.BillID = #{billid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dodonew.model.BiBillKey">
+    delete from bi_Bill
+    where storeId = #{storeid,jdbcType=INTEGER}
+      and BillID = #{billid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dodonew.model.BiBill">
+    insert into bi_Bill (storeId, BillID, TableID, 
+      SubTableID, TableName, TableFullName, 
+      TableAreaID, TableAreaName, TableTypeID, 
+      TableTypeName, MemberID, MemberCardID, 
+      MemberName, PeopleCount, ChargePersonID, 
+      ChargePerson, CreateTime, CreatePersonID, 
+      CreatePerson, IsCheckOuting, CheckOutTime, 
+      CheckOutPersonID, CheckOutPerson, CheckOutNull, 
+      DeleteTime, DeletePersonID, DeletePerson, 
+      DiscountID, DiscountName, DiscountRate, 
+      DiscountPersonID, DiscountPerson, SumOfConsume, 
+      ServiceRate, SumOfService, SumForDiscount, 
+      SumOfCarry, SumToPay, SumPaid, 
+      SumInCash, SumOfInvoice, SumOfCashPaid, 
+      SumOfCashBack, BillDate, BillPeriod, 
+      BillYear, BillMonth, BillDay, 
+      IsArchived, IsUploaded, IsDeleted, 
+      PrintCount, ReduceMantissa, BranchID, 
+      BranchName, WorkStationID, WorkStationName, 
+      Remark, OriginalID, ShiftID, 
+      InsertTime, SubjectID, SubjectName, 
+      AtLeaseCost, devId, billFrom, 
+      ddnBillId)
+    values (#{storeid,jdbcType=INTEGER}, #{billid,jdbcType=CHAR}, #{tableid,jdbcType=CHAR}, 
+      #{subtableid,jdbcType=INTEGER}, #{tablename,jdbcType=CHAR}, #{tablefullname,jdbcType=CHAR}, 
+      #{tableareaid,jdbcType=CHAR}, #{tableareaname,jdbcType=CHAR}, #{tabletypeid,jdbcType=CHAR}, 
+      #{tabletypename,jdbcType=CHAR}, #{memberid,jdbcType=CHAR}, #{membercardid,jdbcType=CHAR}, 
+      #{membername,jdbcType=CHAR}, #{peoplecount,jdbcType=INTEGER}, #{chargepersonid,jdbcType=CHAR}, 
+      #{chargeperson,jdbcType=CHAR}, #{createtime,jdbcType=TIMESTAMP}, #{createpersonid,jdbcType=CHAR}, 
+      #{createperson,jdbcType=CHAR}, #{ischeckouting,jdbcType=BIT}, #{checkouttime,jdbcType=TIMESTAMP}, 
+      #{checkoutpersonid,jdbcType=CHAR}, #{checkoutperson,jdbcType=CHAR}, #{checkoutnull,jdbcType=BIT}, 
+      #{deletetime,jdbcType=VARCHAR}, #{deletepersonid,jdbcType=CHAR}, #{deleteperson,jdbcType=CHAR}, 
+      #{discountid,jdbcType=CHAR}, #{discountname,jdbcType=CHAR}, #{discountrate,jdbcType=REAL}, 
+      #{discountpersonid,jdbcType=CHAR}, #{discountperson,jdbcType=CHAR}, #{sumofconsume,jdbcType=DOUBLE}, 
+      #{servicerate,jdbcType=REAL}, #{sumofservice,jdbcType=DOUBLE}, #{sumfordiscount,jdbcType=DOUBLE}, 
+      #{sumofcarry,jdbcType=REAL}, #{sumtopay,jdbcType=DOUBLE}, #{sumpaid,jdbcType=DOUBLE}, 
+      #{sumincash,jdbcType=REAL}, #{sumofinvoice,jdbcType=REAL}, #{sumofcashpaid,jdbcType=REAL}, 
+      #{sumofcashback,jdbcType=REAL}, #{billdate,jdbcType=TIMESTAMP}, #{billperiod,jdbcType=CHAR}, 
+      #{billyear,jdbcType=INTEGER}, #{billmonth,jdbcType=INTEGER}, #{billday,jdbcType=INTEGER}, 
+      #{isarchived,jdbcType=BIT}, #{isuploaded,jdbcType=BIT}, #{isdeleted,jdbcType=BIT}, 
+      #{printcount,jdbcType=INTEGER}, #{reducemantissa,jdbcType=REAL}, #{branchid,jdbcType=VARCHAR}, 
+      #{branchname,jdbcType=CHAR}, #{workstationid,jdbcType=CHAR}, #{workstationname,jdbcType=CHAR}, 
+      #{remark,jdbcType=CHAR}, #{originalid,jdbcType=CHAR}, #{shiftid,jdbcType=CHAR}, 
+      #{inserttime,jdbcType=TIMESTAMP}, #{subjectid,jdbcType=VARCHAR}, #{subjectname,jdbcType=VARCHAR}, 
+      #{atleasecost,jdbcType=REAL}, #{devid,jdbcType=VARCHAR}, #{billfrom,jdbcType=INTEGER}, 
+      #{ddnbillid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dodonew.model.BiBill">
+    insert into bi_Bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="storeid != null">
+        storeId,
+      </if>
+      <if test="billid != null">
+        BillID,
+      </if>
+      <if test="tableid != null">
+        TableID,
+      </if>
+      <if test="subtableid != null">
+        SubTableID,
+      </if>
+      <if test="tablename != null">
+        TableName,
+      </if>
+      <if test="tablefullname != null">
+        TableFullName,
+      </if>
+      <if test="tableareaid != null">
+        TableAreaID,
+      </if>
+      <if test="tableareaname != null">
+        TableAreaName,
+      </if>
+      <if test="tabletypeid != null">
+        TableTypeID,
+      </if>
+      <if test="tabletypename != null">
+        TableTypeName,
+      </if>
+      <if test="memberid != null">
+        MemberID,
+      </if>
+      <if test="membercardid != null">
+        MemberCardID,
+      </if>
+      <if test="membername != null">
+        MemberName,
+      </if>
+      <if test="peoplecount != null">
+        PeopleCount,
+      </if>
+      <if test="chargepersonid != null">
+        ChargePersonID,
+      </if>
+      <if test="chargeperson != null">
+        ChargePerson,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="createpersonid != null">
+        CreatePersonID,
+      </if>
+      <if test="createperson != null">
+        CreatePerson,
+      </if>
+      <if test="ischeckouting != null">
+        IsCheckOuting,
+      </if>
+      <if test="checkouttime != null">
+        CheckOutTime,
+      </if>
+      <if test="checkoutpersonid != null">
+        CheckOutPersonID,
+      </if>
+      <if test="checkoutperson != null">
+        CheckOutPerson,
+      </if>
+      <if test="checkoutnull != null">
+        CheckOutNull,
+      </if>
+      <if test="deletetime != null">
+        DeleteTime,
+      </if>
+      <if test="deletepersonid != null">
+        DeletePersonID,
+      </if>
+      <if test="deleteperson != null">
+        DeletePerson,
+      </if>
+      <if test="discountid != null">
+        DiscountID,
+      </if>
+      <if test="discountname != null">
+        DiscountName,
+      </if>
+      <if test="discountrate != null">
+        DiscountRate,
+      </if>
+      <if test="discountpersonid != null">
+        DiscountPersonID,
+      </if>
+      <if test="discountperson != null">
+        DiscountPerson,
+      </if>
+      <if test="sumofconsume != null">
+        SumOfConsume,
+      </if>
+      <if test="servicerate != null">
+        ServiceRate,
+      </if>
+      <if test="sumofservice != null">
+        SumOfService,
+      </if>
+      <if test="sumfordiscount != null">
+        SumForDiscount,
+      </if>
+      <if test="sumofcarry != null">
+        SumOfCarry,
+      </if>
+      <if test="sumtopay != null">
+        SumToPay,
+      </if>
+      <if test="sumpaid != null">
+        SumPaid,
+      </if>
+      <if test="sumincash != null">
+        SumInCash,
+      </if>
+      <if test="sumofinvoice != null">
+        SumOfInvoice,
+      </if>
+      <if test="sumofcashpaid != null">
+        SumOfCashPaid,
+      </if>
+      <if test="sumofcashback != null">
+        SumOfCashBack,
+      </if>
+      <if test="billdate != null">
+        BillDate,
+      </if>
+      <if test="billperiod != null">
+        BillPeriod,
+      </if>
+      <if test="billyear != null">
+        BillYear,
+      </if>
+      <if test="billmonth != null">
+        BillMonth,
+      </if>
+      <if test="billday != null">
+        BillDay,
+      </if>
+      <if test="isarchived != null">
+        IsArchived,
+      </if>
+      <if test="isuploaded != null">
+        IsUploaded,
+      </if>
+      <if test="isdeleted != null">
+        IsDeleted,
+      </if>
+      <if test="printcount != null">
+        PrintCount,
+      </if>
+      <if test="reducemantissa != null">
+        ReduceMantissa,
+      </if>
+      <if test="branchid != null">
+        BranchID,
+      </if>
+      <if test="branchname != null">
+        BranchName,
+      </if>
+      <if test="workstationid != null">
+        WorkStationID,
+      </if>
+      <if test="workstationname != null">
+        WorkStationName,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+      <if test="originalid != null">
+        OriginalID,
+      </if>
+      <if test="shiftid != null">
+        ShiftID,
+      </if>
+      <if test="inserttime != null">
+        InsertTime,
+      </if>
+      <if test="subjectid != null">
+        SubjectID,
+      </if>
+      <if test="subjectname != null">
+        SubjectName,
+      </if>
+      <if test="atleasecost != null">
+        AtLeaseCost,
+      </if>
+      <if test="devid != null">
+        devId,
+      </if>
+      <if test="billfrom != null">
+        billFrom,
+      </if>
+      <if test="ddnbillid != null">
+        ddnBillId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="storeid != null">
+        #{storeid,jdbcType=INTEGER},
+      </if>
+      <if test="billid != null">
+        #{billid,jdbcType=CHAR},
+      </if>
+      <if test="tableid != null">
+        #{tableid,jdbcType=CHAR},
+      </if>
+      <if test="subtableid != null">
+        #{subtableid,jdbcType=INTEGER},
+      </if>
+      <if test="tablename != null">
+        #{tablename,jdbcType=CHAR},
+      </if>
+      <if test="tablefullname != null">
+        #{tablefullname,jdbcType=CHAR},
+      </if>
+      <if test="tableareaid != null">
+        #{tableareaid,jdbcType=CHAR},
+      </if>
+      <if test="tableareaname != null">
+        #{tableareaname,jdbcType=CHAR},
+      </if>
+      <if test="tabletypeid != null">
+        #{tabletypeid,jdbcType=CHAR},
+      </if>
+      <if test="tabletypename != null">
+        #{tabletypename,jdbcType=CHAR},
+      </if>
+      <if test="memberid != null">
+        #{memberid,jdbcType=CHAR},
+      </if>
+      <if test="membercardid != null">
+        #{membercardid,jdbcType=CHAR},
+      </if>
+      <if test="membername != null">
+        #{membername,jdbcType=CHAR},
+      </if>
+      <if test="peoplecount != null">
+        #{peoplecount,jdbcType=INTEGER},
+      </if>
+      <if test="chargepersonid != null">
+        #{chargepersonid,jdbcType=CHAR},
+      </if>
+      <if test="chargeperson != null">
+        #{chargeperson,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createpersonid != null">
+        #{createpersonid,jdbcType=CHAR},
+      </if>
+      <if test="createperson != null">
+        #{createperson,jdbcType=CHAR},
+      </if>
+      <if test="ischeckouting != null">
+        #{ischeckouting,jdbcType=BIT},
+      </if>
+      <if test="checkouttime != null">
+        #{checkouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkoutpersonid != null">
+        #{checkoutpersonid,jdbcType=CHAR},
+      </if>
+      <if test="checkoutperson != null">
+        #{checkoutperson,jdbcType=CHAR},
+      </if>
+      <if test="checkoutnull != null">
+        #{checkoutnull,jdbcType=BIT},
+      </if>
+      <if test="deletetime != null">
+        #{deletetime,jdbcType=VARCHAR},
+      </if>
+      <if test="deletepersonid != null">
+        #{deletepersonid,jdbcType=CHAR},
+      </if>
+      <if test="deleteperson != null">
+        #{deleteperson,jdbcType=CHAR},
+      </if>
+      <if test="discountid != null">
+        #{discountid,jdbcType=CHAR},
+      </if>
+      <if test="discountname != null">
+        #{discountname,jdbcType=CHAR},
+      </if>
+      <if test="discountrate != null">
+        #{discountrate,jdbcType=REAL},
+      </if>
+      <if test="discountpersonid != null">
+        #{discountpersonid,jdbcType=CHAR},
+      </if>
+      <if test="discountperson != null">
+        #{discountperson,jdbcType=CHAR},
+      </if>
+      <if test="sumofconsume != null">
+        #{sumofconsume,jdbcType=DOUBLE},
+      </if>
+      <if test="servicerate != null">
+        #{servicerate,jdbcType=REAL},
+      </if>
+      <if test="sumofservice != null">
+        #{sumofservice,jdbcType=DOUBLE},
+      </if>
+      <if test="sumfordiscount != null">
+        #{sumfordiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="sumofcarry != null">
+        #{sumofcarry,jdbcType=REAL},
+      </if>
+      <if test="sumtopay != null">
+        #{sumtopay,jdbcType=DOUBLE},
+      </if>
+      <if test="sumpaid != null">
+        #{sumpaid,jdbcType=DOUBLE},
+      </if>
+      <if test="sumincash != null">
+        #{sumincash,jdbcType=REAL},
+      </if>
+      <if test="sumofinvoice != null">
+        #{sumofinvoice,jdbcType=REAL},
+      </if>
+      <if test="sumofcashpaid != null">
+        #{sumofcashpaid,jdbcType=REAL},
+      </if>
+      <if test="sumofcashback != null">
+        #{sumofcashback,jdbcType=REAL},
+      </if>
+      <if test="billdate != null">
+        #{billdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billperiod != null">
+        #{billperiod,jdbcType=CHAR},
+      </if>
+      <if test="billyear != null">
+        #{billyear,jdbcType=INTEGER},
+      </if>
+      <if test="billmonth != null">
+        #{billmonth,jdbcType=INTEGER},
+      </if>
+      <if test="billday != null">
+        #{billday,jdbcType=INTEGER},
+      </if>
+      <if test="isarchived != null">
+        #{isarchived,jdbcType=BIT},
+      </if>
+      <if test="isuploaded != null">
+        #{isuploaded,jdbcType=BIT},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=BIT},
+      </if>
+      <if test="printcount != null">
+        #{printcount,jdbcType=INTEGER},
+      </if>
+      <if test="reducemantissa != null">
+        #{reducemantissa,jdbcType=REAL},
+      </if>
+      <if test="branchid != null">
+        #{branchid,jdbcType=VARCHAR},
+      </if>
+      <if test="branchname != null">
+        #{branchname,jdbcType=CHAR},
+      </if>
+      <if test="workstationid != null">
+        #{workstationid,jdbcType=CHAR},
+      </if>
+      <if test="workstationname != null">
+        #{workstationname,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=CHAR},
+      </if>
+      <if test="originalid != null">
+        #{originalid,jdbcType=CHAR},
+      </if>
+      <if test="shiftid != null">
+        #{shiftid,jdbcType=CHAR},
+      </if>
+      <if test="inserttime != null">
+        #{inserttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subjectid != null">
+        #{subjectid,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectname != null">
+        #{subjectname,jdbcType=VARCHAR},
+      </if>
+      <if test="atleasecost != null">
+        #{atleasecost,jdbcType=REAL},
+      </if>
+      <if test="devid != null">
+        #{devid,jdbcType=VARCHAR},
+      </if>
+      <if test="billfrom != null">
+        #{billfrom,jdbcType=INTEGER},
+      </if>
+      <if test="ddnbillid != null">
+        #{ddnbillid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dodonew.model.BiBill">
+    update bi_Bill
+    <set>
+      <if test="tableid != null">
+        TableID = #{tableid,jdbcType=CHAR},
+      </if>
+      <if test="subtableid != null">
+        SubTableID = #{subtableid,jdbcType=INTEGER},
+      </if>
+      <if test="tablename != null">
+        TableName = #{tablename,jdbcType=CHAR},
+      </if>
+      <if test="tablefullname != null">
+        TableFullName = #{tablefullname,jdbcType=CHAR},
+      </if>
+      <if test="tableareaid != null">
+        TableAreaID = #{tableareaid,jdbcType=CHAR},
+      </if>
+      <if test="tableareaname != null">
+        TableAreaName = #{tableareaname,jdbcType=CHAR},
+      </if>
+      <if test="tabletypeid != null">
+        TableTypeID = #{tabletypeid,jdbcType=CHAR},
+      </if>
+      <if test="tabletypename != null">
+        TableTypeName = #{tabletypename,jdbcType=CHAR},
+      </if>
+      <if test="memberid != null">
+        MemberID = #{memberid,jdbcType=CHAR},
+      </if>
+      <if test="membercardid != null">
+        MemberCardID = #{membercardid,jdbcType=CHAR},
+      </if>
+      <if test="membername != null">
+        MemberName = #{membername,jdbcType=CHAR},
+      </if>
+      <if test="peoplecount != null">
+        PeopleCount = #{peoplecount,jdbcType=INTEGER},
+      </if>
+      <if test="chargepersonid != null">
+        ChargePersonID = #{chargepersonid,jdbcType=CHAR},
+      </if>
+      <if test="chargeperson != null">
+        ChargePerson = #{chargeperson,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createpersonid != null">
+        CreatePersonID = #{createpersonid,jdbcType=CHAR},
+      </if>
+      <if test="createperson != null">
+        CreatePerson = #{createperson,jdbcType=CHAR},
+      </if>
+      <if test="ischeckouting != null">
+        IsCheckOuting = #{ischeckouting,jdbcType=BIT},
+      </if>
+      <if test="checkouttime != null">
+        CheckOutTime = #{checkouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkoutpersonid != null">
+        CheckOutPersonID = #{checkoutpersonid,jdbcType=CHAR},
+      </if>
+      <if test="checkoutperson != null">
+        CheckOutPerson = #{checkoutperson,jdbcType=CHAR},
+      </if>
+      <if test="checkoutnull != null">
+        CheckOutNull = #{checkoutnull,jdbcType=BIT},
+      </if>
+      <if test="deletetime != null">
+        DeleteTime = #{deletetime,jdbcType=VARCHAR},
+      </if>
+      <if test="deletepersonid != null">
+        DeletePersonID = #{deletepersonid,jdbcType=CHAR},
+      </if>
+      <if test="deleteperson != null">
+        DeletePerson = #{deleteperson,jdbcType=CHAR},
+      </if>
+      <if test="discountid != null">
+        DiscountID = #{discountid,jdbcType=CHAR},
+      </if>
+      <if test="discountname != null">
+        DiscountName = #{discountname,jdbcType=CHAR},
+      </if>
+      <if test="discountrate != null">
+        DiscountRate = #{discountrate,jdbcType=REAL},
+      </if>
+      <if test="discountpersonid != null">
+        DiscountPersonID = #{discountpersonid,jdbcType=CHAR},
+      </if>
+      <if test="discountperson != null">
+        DiscountPerson = #{discountperson,jdbcType=CHAR},
+      </if>
+      <if test="sumofconsume != null">
+        SumOfConsume = #{sumofconsume,jdbcType=DOUBLE},
+      </if>
+      <if test="servicerate != null">
+        ServiceRate = #{servicerate,jdbcType=REAL},
+      </if>
+      <if test="sumofservice != null">
+        SumOfService = #{sumofservice,jdbcType=DOUBLE},
+      </if>
+      <if test="sumfordiscount != null">
+        SumForDiscount = #{sumfordiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="sumofcarry != null">
+        SumOfCarry = #{sumofcarry,jdbcType=REAL},
+      </if>
+      <if test="sumtopay != null">
+        SumToPay = #{sumtopay,jdbcType=DOUBLE},
+      </if>
+      <if test="sumpaid != null">
+        SumPaid = #{sumpaid,jdbcType=DOUBLE},
+      </if>
+      <if test="sumincash != null">
+        SumInCash = #{sumincash,jdbcType=REAL},
+      </if>
+      <if test="sumofinvoice != null">
+        SumOfInvoice = #{sumofinvoice,jdbcType=REAL},
+      </if>
+      <if test="sumofcashpaid != null">
+        SumOfCashPaid = #{sumofcashpaid,jdbcType=REAL},
+      </if>
+      <if test="sumofcashback != null">
+        SumOfCashBack = #{sumofcashback,jdbcType=REAL},
+      </if>
+      <if test="billdate != null">
+        BillDate = #{billdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billperiod != null">
+        BillPeriod = #{billperiod,jdbcType=CHAR},
+      </if>
+      <if test="billyear != null">
+        BillYear = #{billyear,jdbcType=INTEGER},
+      </if>
+      <if test="billmonth != null">
+        BillMonth = #{billmonth,jdbcType=INTEGER},
+      </if>
+      <if test="billday != null">
+        BillDay = #{billday,jdbcType=INTEGER},
+      </if>
+      <if test="isarchived != null">
+        IsArchived = #{isarchived,jdbcType=BIT},
+      </if>
+      <if test="isuploaded != null">
+        IsUploaded = #{isuploaded,jdbcType=BIT},
+      </if>
+      <if test="isdeleted != null">
+        IsDeleted = #{isdeleted,jdbcType=BIT},
+      </if>
+      <if test="printcount != null">
+        PrintCount = #{printcount,jdbcType=INTEGER},
+      </if>
+      <if test="reducemantissa != null">
+        ReduceMantissa = #{reducemantissa,jdbcType=REAL},
+      </if>
+      <if test="branchid != null">
+        BranchID = #{branchid,jdbcType=VARCHAR},
+      </if>
+      <if test="branchname != null">
+        BranchName = #{branchname,jdbcType=CHAR},
+      </if>
+      <if test="workstationid != null">
+        WorkStationID = #{workstationid,jdbcType=CHAR},
+      </if>
+      <if test="workstationname != null">
+        WorkStationName = #{workstationname,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=CHAR},
+      </if>
+      <if test="originalid != null">
+        OriginalID = #{originalid,jdbcType=CHAR},
+      </if>
+      <if test="shiftid != null">
+        ShiftID = #{shiftid,jdbcType=CHAR},
+      </if>
+      <if test="inserttime != null">
+        InsertTime = #{inserttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subjectid != null">
+        SubjectID = #{subjectid,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectname != null">
+        SubjectName = #{subjectname,jdbcType=VARCHAR},
+      </if>
+      <if test="atleasecost != null">
+        AtLeaseCost = #{atleasecost,jdbcType=REAL},
+      </if>
+      <if test="devid != null">
+        devId = #{devid,jdbcType=VARCHAR},
+      </if>
+      <if test="billfrom != null">
+        billFrom = #{billfrom,jdbcType=INTEGER},
+      </if>
+      <if test="ddnbillid != null">
+        ddnBillId = #{ddnbillid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where storeId = #{storeid,jdbcType=INTEGER}
+      and BillID = #{billid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dodonew.model.BiBill">
+    update bi_Bill
+    set TableID = #{tableid,jdbcType=CHAR},
+      SubTableID = #{subtableid,jdbcType=INTEGER},
+      TableName = #{tablename,jdbcType=CHAR},
+      TableFullName = #{tablefullname,jdbcType=CHAR},
+      TableAreaID = #{tableareaid,jdbcType=CHAR},
+      TableAreaName = #{tableareaname,jdbcType=CHAR},
+      TableTypeID = #{tabletypeid,jdbcType=CHAR},
+      TableTypeName = #{tabletypename,jdbcType=CHAR},
+      MemberID = #{memberid,jdbcType=CHAR},
+      MemberCardID = #{membercardid,jdbcType=CHAR},
+      MemberName = #{membername,jdbcType=CHAR},
+      PeopleCount = #{peoplecount,jdbcType=INTEGER},
+      ChargePersonID = #{chargepersonid,jdbcType=CHAR},
+      ChargePerson = #{chargeperson,jdbcType=CHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreatePersonID = #{createpersonid,jdbcType=CHAR},
+      CreatePerson = #{createperson,jdbcType=CHAR},
+      IsCheckOuting = #{ischeckouting,jdbcType=BIT},
+      CheckOutTime = #{checkouttime,jdbcType=TIMESTAMP},
+      CheckOutPersonID = #{checkoutpersonid,jdbcType=CHAR},
+      CheckOutPerson = #{checkoutperson,jdbcType=CHAR},
+      CheckOutNull = #{checkoutnull,jdbcType=BIT},
+      DeleteTime = #{deletetime,jdbcType=VARCHAR},
+      DeletePersonID = #{deletepersonid,jdbcType=CHAR},
+      DeletePerson = #{deleteperson,jdbcType=CHAR},
+      DiscountID = #{discountid,jdbcType=CHAR},
+      DiscountName = #{discountname,jdbcType=CHAR},
+      DiscountRate = #{discountrate,jdbcType=REAL},
+      DiscountPersonID = #{discountpersonid,jdbcType=CHAR},
+      DiscountPerson = #{discountperson,jdbcType=CHAR},
+      SumOfConsume = #{sumofconsume,jdbcType=DOUBLE},
+      ServiceRate = #{servicerate,jdbcType=REAL},
+      SumOfService = #{sumofservice,jdbcType=DOUBLE},
+      SumForDiscount = #{sumfordiscount,jdbcType=DOUBLE},
+      SumOfCarry = #{sumofcarry,jdbcType=REAL},
+      SumToPay = #{sumtopay,jdbcType=DOUBLE},
+      SumPaid = #{sumpaid,jdbcType=DOUBLE},
+      SumInCash = #{sumincash,jdbcType=REAL},
+      SumOfInvoice = #{sumofinvoice,jdbcType=REAL},
+      SumOfCashPaid = #{sumofcashpaid,jdbcType=REAL},
+      SumOfCashBack = #{sumofcashback,jdbcType=REAL},
+      BillDate = #{billdate,jdbcType=TIMESTAMP},
+      BillPeriod = #{billperiod,jdbcType=CHAR},
+      BillYear = #{billyear,jdbcType=INTEGER},
+      BillMonth = #{billmonth,jdbcType=INTEGER},
+      BillDay = #{billday,jdbcType=INTEGER},
+      IsArchived = #{isarchived,jdbcType=BIT},
+      IsUploaded = #{isuploaded,jdbcType=BIT},
+      IsDeleted = #{isdeleted,jdbcType=BIT},
+      PrintCount = #{printcount,jdbcType=INTEGER},
+      ReduceMantissa = #{reducemantissa,jdbcType=REAL},
+      BranchID = #{branchid,jdbcType=VARCHAR},
+      BranchName = #{branchname,jdbcType=CHAR},
+      WorkStationID = #{workstationid,jdbcType=CHAR},
+      WorkStationName = #{workstationname,jdbcType=CHAR},
+      Remark = #{remark,jdbcType=CHAR},
+      OriginalID = #{originalid,jdbcType=CHAR},
+      ShiftID = #{shiftid,jdbcType=CHAR},
+      InsertTime = #{inserttime,jdbcType=TIMESTAMP},
+      SubjectID = #{subjectid,jdbcType=VARCHAR},
+      SubjectName = #{subjectname,jdbcType=VARCHAR},
+      AtLeaseCost = #{atleasecost,jdbcType=REAL},
+      devId = #{devid,jdbcType=VARCHAR},
+      billFrom = #{billfrom,jdbcType=INTEGER},
+      ddnBillId = #{ddnbillid,jdbcType=VARCHAR}
+    where storeId = #{storeid,jdbcType=INTEGER}
+      and BillID = #{billid,jdbcType=CHAR}
+  </update>
+</mapper>

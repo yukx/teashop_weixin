@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.WxPayOrderInfoMapper">
+    <resultMap id="BaseResultMap" type="com.dodonew.model.WxPayOrderInfo">
+        <id column="T_orderId" jdbcType="VARCHAR" property="orderid"/>
+        <result column="T_BillID" jdbcType="VARCHAR" property="billid"/>
+        <result column="T_storeId" property="storeid"/>
+        <result column="T_storeName" jdbcType="VARCHAR" property="storename"/>
+        <result column="T_payAmount" jdbcType="INTEGER" property="payamount"/>
+        <result column="T_createTime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="T_checkOutStatus" jdbcType="TINYINT" property="checkoutstatus"/>
+        <result column="T_OpenId" jdbcType="VARCHAR" property="openid"/>
+        <result column="T_prepayid" jdbcType="VARCHAR" property="prepayid"/>
+        <result column="T_payWay" jdbcType="INTEGER" property="payway"/>
+        <result column="T_status" jdbcType="INTEGER" property="status"/>
+        <result column="T_createPeople" jdbcType="VARCHAR" property="createpeople"/>
+        <result column="T_rechargeId" jdbcType="VARCHAR" property="rechargeid"/>
+        <result column="T_memberId" jdbcType="VARCHAR" property="memberid"/>
+        <result column="T_payWayId" jdbcType="VARCHAR" property="paywayid"/>
+        <result column="T_appId" jdbcType="VARCHAR" property="appid"/>
+        <result column="T_paySign" jdbcType="VARCHAR" property="paysign"/>
+        <result column="T_carAppId" jdbcType="VARCHAR" property="carappid"/>
+        <result column="T_nonceStr" jdbcType="VARCHAR" property="noncestr"/>
+        <result column="T_timeStr" jdbcType="VARCHAR" property="timestr"/>
+        <result column="T_yueshOrderId" jdbcType="VARCHAR" property="yueshorderid"/>
+        <result column="T_weixinPayType" jdbcType="INTEGER" property="weixinpaytype"/>
+        <result column="T_remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="T_invoice" jdbcType="INTEGER" property="invoice"/>
+        <result column="T_tableId" jdbcType="VARCHAR" property="tableid"/>
+        <result column="T_transaction_id" jdbcType="VARCHAR" property="transactionId"/>
+        <result column="T_is_usecoupon" jdbcType="TINYINT" property="isUsecoupon"/>
+        <result column="T_discount" jdbcType="INTEGER" property="discount"/>
+        <result column="T_coupon_id" jdbcType="VARCHAR" property="couponId"/>
+        <result column="T_orderType" jdbcType="INTEGER" property="ordertype"/>
+        <result column="T_ddnOpenId" jdbcType="VARCHAR" property="ddnopenid"/>
+        <result column="T_checkNum" jdbcType="INTEGER" property="checknum"/>
+        <result column="T_unPayAmount" jdbcType="INTEGER" property="unpayamount"/>
+        <result column="T_unUseGiveAmount" jdbcType="INTEGER" property="unusegiveamount"/>
+        <result column="T_unUseBlock" jdbcType="INTEGER" property="unuseblock"/>
+        <result column="T_cardDiscount" jdbcType="DOUBLE" property="carddiscount"/>
+        <result column="T_realPayAmount" jdbcType="INTEGER" property="realpayamount"/>
+        <result column="T_favAmount" jdbcType="INTEGER" property="favAmount"/>
+        <result column="T_formId" jdbcType="INTEGER" property="formId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    T.orderId as T_orderId, T.BillID as T_BillID, T.storeId as T_storeId, T.storeName as T_storeName, 
+    T.payAmount as T_payAmount, T.createTime as T_createTime, T.checkOutStatus as T_checkOutStatus, 
+    T.OpenId as T_OpenId, T.prepayid as T_prepayid, T.payWay as T_payWay, T.status as T_status, 
+    T.createPeople as T_createPeople, T.rechargeId as T_rechargeId, T.memberId as T_memberId, 
+    T.payWayId as T_payWayId, T.appId as T_appId, T.paySign as T_paySign, T.carAppId as T_carAppId, 
+    T.nonceStr as T_nonceStr, T.timeStr as T_timeStr, T.yueshOrderId as T_yueshOrderId, 
+    T.weixinPayType as T_weixinPayType, T.remark as T_remark, T.invoice as T_invoice, 
+    T.tableId as T_tableId, T.transaction_id as T_transaction_id, T.is_usecoupon as T_is_usecoupon, 
+    T.discount as T_discount, T.coupon_id as T_coupon_id, T.orderType as T_orderType, 
+    T.ddnOpenId as T_ddnOpenId, T.checkNum as T_checkNum, T.unPayAmount as T_unPayAmount, 
+    T.unUseGiveAmount as T_unUseGiveAmount, T.unUseBlock as T_unUseBlock, T.cardDiscount as T_cardDiscount, 
+    T.realPayAmount as T_realPayAmount, T.formId as T_formId, T.favAmount as T_favAmount
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from wx_PayOrderInfo T
+        where T.orderId = #{orderid,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateRealMoney" parameterType="com.dodonew.entityVo.CardPayVo">
+    UPDATE wx_PayOrderInfo SET realPayAmount=#{realAmount} WHERE orderId=#{orderId}
+  </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from wx_PayOrderInfo
+    where orderId = #{orderid,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.dodonew.model.WxPayOrderInfo">
+    insert into wx_PayOrderInfo (orderId, BillID, storeId, 
+      storeName, payAmount, createTime, 
+      checkOutStatus, OpenId, prepayid, 
+      payWay, status, createPeople, 
+      rechargeId, memberId, payWayId, 
+      appId, paySign, carAppId, 
+      nonceStr, timeStr, yueshOrderId, 
+      weixinPayType, remark, invoice, 
+      tableId, transaction_id, is_usecoupon, 
+      discount, coupon_id, orderType, 
+      ddnOpenId, checkNum, unPayAmount, 
+      unUseGiveAmount, unUseBlock, cardDiscount, 
+      realPayAmount,formId,favAmount)
+    values (#{orderid,jdbcType=VARCHAR}, #{billid,jdbcType=VARCHAR}, #{storeid,jdbcType=INTEGER}, 
+      #{storename,jdbcType=VARCHAR}, #{payamount,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{checkoutstatus,jdbcType=TINYINT}, #{openid,jdbcType=VARCHAR}, #{prepayid,jdbcType=VARCHAR}, 
+      #{payway,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createpeople,jdbcType=VARCHAR}, 
+      #{rechargeid,jdbcType=VARCHAR}, #{memberid,jdbcType=VARCHAR}, #{paywayid,jdbcType=VARCHAR}, 
+      #{appid,jdbcType=VARCHAR}, #{paysign,jdbcType=VARCHAR}, #{carappid,jdbcType=VARCHAR}, 
+      #{noncestr,jdbcType=VARCHAR}, #{timestr,jdbcType=VARCHAR}, #{yueshorderid,jdbcType=VARCHAR}, 
+      #{weixinpaytype,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{invoice,jdbcType=INTEGER}, 
+      #{tableid,jdbcType=VARCHAR}, #{transactionId,jdbcType=VARCHAR}, #{isUsecoupon,jdbcType=TINYINT}, 
+      #{discount,jdbcType=INTEGER}, #{couponId,jdbcType=VARCHAR}, #{ordertype,jdbcType=INTEGER}, 
+      #{ddnopenid,jdbcType=VARCHAR}, #{checknum,jdbcType=INTEGER}, #{unpayamount,jdbcType=INTEGER}, 
+      #{unusegiveamount,jdbcType=INTEGER}, #{unuseblock,jdbcType=INTEGER}, #{carddiscount,jdbcType=DOUBLE}, 
+      #{realpayamount,jdbcType=INTEGER}, #{formId, jdbcType=VARCHAR},#{favAmount,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.dodonew.model.WxPayOrderInfo">
+        insert into wx_PayOrderInfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderid != null">
+                orderId,
+            </if>
+            <if test="billid != null">
+                BillID,
+            </if>
+            <if test="storeid != null">
+                storeId,
+            </if>
+            <if test="storename != null">
+                storeName,
+            </if>
+            <if test="payamount != null">
+                payAmount,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+            <if test="checkoutstatus != null">
+                checkOutStatus,
+            </if>
+            <if test="openid != null">
+                OpenId,
+            </if>
+            <if test="prepayid != null">
+                prepayid,
+            </if>
+            <if test="payway != null">
+                payWay,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createpeople != null">
+                createPeople,
+            </if>
+            <if test="rechargeid != null">
+                rechargeId,
+            </if>
+            <if test="memberid != null">
+                memberId,
+            </if>
+            <if test="paywayid != null">
+                payWayId,
+            </if>
+            <if test="appid != null">
+                appId,
+            </if>
+            <if test="paysign != null">
+                paySign,
+            </if>
+            <if test="carappid != null">
+                carAppId,
+            </if>
+            <if test="noncestr != null">
+                nonceStr,
+            </if>
+            <if test="timestr != null">
+                timeStr,
+            </if>
+            <if test="yueshorderid != null">
+                yueshOrderId,
+            </if>
+            <if test="weixinpaytype != null">
+                weixinPayType,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="invoice != null">
+                invoice,
+            </if>
+            <if test="tableid != null">
+                tableId,
+            </if>
+            <if test="transactionId != null">
+                transaction_id,
+            </if>
+            <if test="isUsecoupon != null">
+                is_usecoupon,
+            </if>
+            <if test="discount != null">
+                discount,
+            </if>
+            <if test="couponId != null">
+                coupon_id,
+            </if>
+            <if test="ordertype != null">
+                orderType,
+            </if>
+            <if test="ddnopenid != null">
+                ddnOpenId,
+            </if>
+            <if test="checknum != null">
+                checkNum,
+            </if>
+            <if test="unpayamount != null">
+                unPayAmount,
+            </if>
+            <if test="unusegiveamount != null">
+                unUseGiveAmount,
+            </if>
+            <if test="unuseblock != null">
+                unUseBlock,
+            </if>
+            <if test="carddiscount != null">
+                cardDiscount,
+            </if>
+            <if test="realpayamount != null">
+                realPayAmount,
+            </if>
+            <if test="formId != null">
+                formId,
+            </if>
+            <if test="favAmount != null">
+                favAmount,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderid != null">
+                #{orderid,jdbcType=VARCHAR},
+            </if>
+            <if test="billid != null">
+                #{billid,jdbcType=VARCHAR},
+            </if>
+            <if test="storeid != null">
+                #{storeid,jdbcType=INTEGER},
+            </if>
+            <if test="storename != null">
+                #{storename,jdbcType=VARCHAR},
+            </if>
+            <if test="payamount != null">
+                #{payamount,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="checkoutstatus != null">
+                #{checkoutstatus,jdbcType=TINYINT},
+            </if>
+            <if test="openid != null">
+                #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="prepayid != null">
+                #{prepayid,jdbcType=VARCHAR},
+            </if>
+            <if test="payway != null">
+                #{payway,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createpeople != null">
+                #{createpeople,jdbcType=VARCHAR},
+            </if>
+            <if test="rechargeid != null">
+                #{rechargeid,jdbcType=VARCHAR},
+            </if>
+            <if test="memberid != null">
+                #{memberid,jdbcType=VARCHAR},
+            </if>
+            <if test="paywayid != null">
+                #{paywayid,jdbcType=VARCHAR},
+            </if>
+            <if test="appid != null">
+                #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="paysign != null">
+                #{paysign,jdbcType=VARCHAR},
+            </if>
+            <if test="carappid != null">
+                #{carappid,jdbcType=VARCHAR},
+            </if>
+            <if test="noncestr != null">
+                #{noncestr,jdbcType=VARCHAR},
+            </if>
+            <if test="timestr != null">
+                #{timestr,jdbcType=VARCHAR},
+            </if>
+            <if test="yueshorderid != null">
+                #{yueshorderid,jdbcType=VARCHAR},
+            </if>
+            <if test="weixinpaytype != null">
+                #{weixinpaytype,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="invoice != null">
+                #{invoice,jdbcType=INTEGER},
+            </if>
+            <if test="tableid != null">
+                #{tableid,jdbcType=VARCHAR},
+            </if>
+            <if test="transactionId != null">
+                #{transactionId,jdbcType=VARCHAR},
+            </if>
+            <if test="isUsecoupon != null">
+                #{isUsecoupon,jdbcType=TINYINT},
+            </if>
+            <if test="discount != null">
+                #{discount,jdbcType=INTEGER},
+            </if>
+            <if test="couponId != null">
+                #{couponId,jdbcType=VARCHAR},
+            </if>
+            <if test="ordertype != null">
+                #{ordertype,jdbcType=INTEGER},
+            </if>
+            <if test="ddnopenid != null">
+                #{ddnopenid,jdbcType=VARCHAR},
+            </if>
+            <if test="checknum != null">
+                #{checknum,jdbcType=INTEGER},
+            </if>
+            <if test="unpayamount != null">
+                #{unpayamount,jdbcType=INTEGER},
+            </if>
+            <if test="unusegiveamount != null">
+                #{unusegiveamount,jdbcType=INTEGER},
+            </if>
+            <if test="unuseblock != null">
+                #{unuseblock,jdbcType=INTEGER},
+            </if>
+            <if test="carddiscount != null">
+                #{carddiscount,jdbcType=DOUBLE},
+            </if>
+            <if test="realpayamount != null">
+                #{realpayamount,jdbcType=INTEGER},
+            </if>
+            <if test="formId != null">
+                #{formId, jdbcType=VARCHAR},
+            </if>
+            <if test="favAmount != null">
+                #{favAmount,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dodonew.model.WxPayOrderInfo">
+        update wx_PayOrderInfo
+        <set>
+            <if test="billid != null">
+                BillID = #{billid,jdbcType=VARCHAR},
+            </if>
+            <if test="storeid != null">
+                storeId = #{storeid,jdbcType=INTEGER},
+            </if>
+            <if test="storename != null">
+                storeName = #{storename,jdbcType=VARCHAR},
+            </if>
+            <if test="payamount != null">
+                payAmount = #{payamount,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="checkoutstatus != null">
+                checkOutStatus = #{checkoutstatus,jdbcType=TINYINT},
+            </if>
+            <if test="openid != null">
+                OpenId = #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="prepayid != null">
+                prepayid = #{prepayid,jdbcType=VARCHAR},
+            </if>
+            <if test="payway != null">
+                payWay = #{payway,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createpeople != null">
+                createPeople = #{createpeople,jdbcType=VARCHAR},
+            </if>
+            <if test="rechargeid != null">
+                rechargeId = #{rechargeid,jdbcType=VARCHAR},
+            </if>
+            <if test="memberid != null">
+                memberId = #{memberid,jdbcType=VARCHAR},
+            </if>
+            <if test="paywayid != null">
+                payWayId = #{paywayid,jdbcType=VARCHAR},
+            </if>
+            <if test="appid != null">
+                appId = #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="paysign != null">
+                paySign = #{paysign,jdbcType=VARCHAR},
+            </if>
+            <if test="carappid != null">
+                carAppId = #{carappid,jdbcType=VARCHAR},
+            </if>
+            <if test="noncestr != null">
+                nonceStr = #{noncestr,jdbcType=VARCHAR},
+            </if>
+            <if test="timestr != null">
+                timeStr = #{timestr,jdbcType=VARCHAR},
+            </if>
+            <if test="yueshorderid != null">
+                yueshOrderId = #{yueshorderid,jdbcType=VARCHAR},
+            </if>
+            <if test="weixinpaytype != null">
+                weixinPayType = #{weixinpaytype,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="invoice != null">
+                invoice = #{invoice,jdbcType=INTEGER},
+            </if>
+            <if test="tableid != null">
+                tableId = #{tableid,jdbcType=VARCHAR},
+            </if>
+            <if test="transactionId != null">
+                transaction_id = #{transactionId,jdbcType=VARCHAR},
+            </if>
+            <if test="isUsecoupon != null">
+                is_usecoupon = #{isUsecoupon,jdbcType=TINYINT},
+            </if>
+            <if test="discount != null">
+                discount = #{discount,jdbcType=INTEGER},
+            </if>
+            <if test="couponId != null">
+                coupon_id = #{couponId,jdbcType=VARCHAR},
+            </if>
+            <if test="ordertype != null">
+                orderType = #{ordertype,jdbcType=INTEGER},
+            </if>
+            <if test="ddnopenid != null">
+                ddnOpenId = #{ddnopenid,jdbcType=VARCHAR},
+            </if>
+            <if test="checknum != null">
+                checkNum = #{checknum,jdbcType=INTEGER},
+            </if>
+            <if test="unpayamount != null">
+                unPayAmount = #{unpayamount,jdbcType=INTEGER},
+            </if>
+            <if test="unusegiveamount != null">
+                unUseGiveAmount = #{unusegiveamount,jdbcType=INTEGER},
+            </if>
+            <if test="unuseblock != null">
+                unUseBlock = #{unuseblock,jdbcType=INTEGER},
+            </if>
+            <if test="carddiscount != null">
+                cardDiscount = #{carddiscount,jdbcType=DOUBLE},
+            </if>
+            <if test="realpayamount != null">
+                realPayAmount = #{realpayamount,jdbcType=INTEGER},
+            </if>
+            <if test="formId != null">
+                formId = #{formId, jdbcType=VARCHAR},
+            </if>
+            <if test="favAmount != null">
+                favAmount = #{favAmount,jdbcType=INTEGER},
+            </if>
+        </set>
+        where orderId = #{orderid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dodonew.model.WxPayOrderInfo">
+    update wx_PayOrderInfo
+    set BillID = #{billid,jdbcType=VARCHAR},
+      storeId = #{storeid,jdbcType=INTEGER},
+      storeName = #{storename,jdbcType=VARCHAR},
+      payAmount = #{payamount,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      checkOutStatus = #{checkoutstatus,jdbcType=TINYINT},
+      OpenId = #{openid,jdbcType=VARCHAR},
+      prepayid = #{prepayid,jdbcType=VARCHAR},
+      payWay = #{payway,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      createPeople = #{createpeople,jdbcType=VARCHAR},
+      rechargeId = #{rechargeid,jdbcType=VARCHAR},
+      memberId = #{memberid,jdbcType=VARCHAR},
+      payWayId = #{paywayid,jdbcType=VARCHAR},
+      appId = #{appid,jdbcType=VARCHAR},
+      paySign = #{paysign,jdbcType=VARCHAR},
+      carAppId = #{carappid,jdbcType=VARCHAR},
+      nonceStr = #{noncestr,jdbcType=VARCHAR},
+      timeStr = #{timestr,jdbcType=VARCHAR},
+      yueshOrderId = #{yueshorderid,jdbcType=VARCHAR},
+      weixinPayType = #{weixinpaytype,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      invoice = #{invoice,jdbcType=INTEGER},
+      tableId = #{tableid,jdbcType=VARCHAR},
+      transaction_id = #{transactionId,jdbcType=VARCHAR},
+      is_usecoupon = #{isUsecoupon,jdbcType=TINYINT},
+      discount = #{discount,jdbcType=INTEGER},
+      coupon_id = #{couponId,jdbcType=VARCHAR},
+      orderType = #{ordertype,jdbcType=INTEGER},
+      ddnOpenId = #{ddnopenid,jdbcType=VARCHAR},
+      checkNum = #{checknum,jdbcType=INTEGER},
+      unPayAmount = #{unpayamount,jdbcType=INTEGER},
+      unUseGiveAmount = #{unusegiveamount,jdbcType=INTEGER},
+      unUseBlock = #{unuseblock,jdbcType=INTEGER},
+      cardDiscount = #{carddiscount,jdbcType=DOUBLE},
+      realPayAmount = #{realpayamount,jdbcType=INTEGER},
+      formId = #{formId,jdbcType=VARCHAR},
+      favAmount = #{favAmount,jdbcType=INTEGER}
+    where orderId = #{orderid,jdbcType=VARCHAR}
+  </update>
+</mapper>

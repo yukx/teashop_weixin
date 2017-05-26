@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.Pv_UserMapper">
+  <resultMap id="BaseResultMap" type="com.dodonew.model.Pv_User">
+    <id column="storeId" jdbcType="VARCHAR" property="storeId" />
+    <id column="UserID" jdbcType="CHAR" property="userID" />
+    <result column="UserName" jdbcType="CHAR" property="userName" />
+    <result column="UserGroupID" jdbcType="CHAR" property="userGroupID" />
+    <result column="Password" jdbcType="CHAR" property="password" />
+    <result column="StopFlag" jdbcType="BIT" property="stopFlag" />
+    <result column="Remark" jdbcType="CHAR" property="remark" />
+    <result column="LimitDiscount" jdbcType="REAL" property="limitDiscount" />
+    <result column="AllowPresent" jdbcType="INTEGER" property="allowPresent" />
+    <result column="AllowLock" jdbcType="INTEGER" property="allowLock" />
+    <result column="UserPhone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="powerItem" jdbcType="VARCHAR" property="powerItem" />
+    <result column="storeUserId" jdbcType="VARCHAR" property="storeUserId" />
+    <result column="isGive" jdbcType="TINYINT" property="isGive" />
+    <result column="giveMoney" jdbcType="DOUBLE" property="giveMoney" />
+    <result column="thankWrite" jdbcType="VARCHAR" property="thankWrite" />
+    <result column="openId" jdbcType="VARCHAR" property="openId" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="createPeople" jdbcType="CHAR" property="createPeople" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    storeId, UserID, UserName, UserGroupID, Password, StopFlag, Remark, LimitDiscount, 
+    AllowPresent, AllowLock, UserPhone, powerItem, storeUserId, isGive, giveMoney, thankWrite, 
+    openId, createTime, createPeople
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.dodonew.model.Pv_UserKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pv_User
+    where storeId = #{storeId,jdbcType=VARCHAR}
+      and UserID = #{userID,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dodonew.model.Pv_UserKey">
+    delete from pv_User
+    where storeId = #{storeId,jdbcType=VARCHAR}
+      and UserID = #{userID,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dodonew.model.Pv_User">
+    insert into pv_User (storeId, UserID, UserName, 
+      UserGroupID, Password, StopFlag, 
+      Remark, LimitDiscount, AllowPresent, 
+      AllowLock, UserPhone, powerItem, 
+      storeUserId, isGive, giveMoney, 
+      thankWrite, openId, createTime, 
+      createPeople)
+    values (#{storeId,jdbcType=VARCHAR}, #{userID,jdbcType=CHAR}, #{userName,jdbcType=CHAR}, 
+      #{userGroupID,jdbcType=CHAR}, #{password,jdbcType=CHAR}, #{stopFlag,jdbcType=BIT}, 
+      #{remark,jdbcType=CHAR}, #{limitDiscount,jdbcType=REAL}, #{allowPresent,jdbcType=INTEGER}, 
+      #{allowLock,jdbcType=INTEGER}, #{userPhone,jdbcType=VARCHAR}, #{powerItem,jdbcType=VARCHAR}, 
+      #{storeUserId,jdbcType=VARCHAR}, #{isGive,jdbcType=TINYINT}, #{giveMoney,jdbcType=DOUBLE}, 
+      #{thankWrite,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createPeople,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dodonew.model.Pv_User">
+    insert into pv_User
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="storeId != null">
+        storeId,
+      </if>
+      <if test="userID != null">
+        UserID,
+      </if>
+      <if test="userName != null">
+        UserName,
+      </if>
+      <if test="userGroupID != null">
+        UserGroupID,
+      </if>
+      <if test="password != null">
+        Password,
+      </if>
+      <if test="stopFlag != null">
+        StopFlag,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+      <if test="limitDiscount != null">
+        LimitDiscount,
+      </if>
+      <if test="allowPresent != null">
+        AllowPresent,
+      </if>
+      <if test="allowLock != null">
+        AllowLock,
+      </if>
+      <if test="userPhone != null">
+        UserPhone,
+      </if>
+      <if test="powerItem != null">
+        powerItem,
+      </if>
+      <if test="storeUserId != null">
+        storeUserId,
+      </if>
+      <if test="isGive != null">
+        isGive,
+      </if>
+      <if test="giveMoney != null">
+        giveMoney,
+      </if>
+      <if test="thankWrite != null">
+        thankWrite,
+      </if>
+      <if test="openId != null">
+        openId,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="createPeople != null">
+        createPeople,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="storeId != null">
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="userID != null">
+        #{userID,jdbcType=CHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="userGroupID != null">
+        #{userGroupID,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=CHAR},
+      </if>
+      <if test="stopFlag != null">
+        #{stopFlag,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=CHAR},
+      </if>
+      <if test="limitDiscount != null">
+        #{limitDiscount,jdbcType=REAL},
+      </if>
+      <if test="allowPresent != null">
+        #{allowPresent,jdbcType=INTEGER},
+      </if>
+      <if test="allowLock != null">
+        #{allowLock,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="powerItem != null">
+        #{powerItem,jdbcType=VARCHAR},
+      </if>
+      <if test="storeUserId != null">
+        #{storeUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isGive != null">
+        #{isGive,jdbcType=TINYINT},
+      </if>
+      <if test="giveMoney != null">
+        #{giveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="thankWrite != null">
+        #{thankWrite,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPeople != null">
+        #{createPeople,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dodonew.model.Pv_User">
+    update pv_User
+    <set>
+      <if test="userName != null">
+        UserName = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="userGroupID != null">
+        UserGroupID = #{userGroupID,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        Password = #{password,jdbcType=CHAR},
+      </if>
+      <if test="stopFlag != null">
+        StopFlag = #{stopFlag,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=CHAR},
+      </if>
+      <if test="limitDiscount != null">
+        LimitDiscount = #{limitDiscount,jdbcType=REAL},
+      </if>
+      <if test="allowPresent != null">
+        AllowPresent = #{allowPresent,jdbcType=INTEGER},
+      </if>
+      <if test="allowLock != null">
+        AllowLock = #{allowLock,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null">
+        UserPhone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="powerItem != null">
+        powerItem = #{powerItem,jdbcType=VARCHAR},
+      </if>
+      <if test="storeUserId != null">
+        storeUserId = #{storeUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isGive != null">
+        isGive = #{isGive,jdbcType=TINYINT},
+      </if>
+      <if test="giveMoney != null">
+        giveMoney = #{giveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="thankWrite != null">
+        thankWrite = #{thankWrite,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        openId = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPeople != null">
+        createPeople = #{createPeople,jdbcType=CHAR},
+      </if>
+    </set>
+    where storeId = #{storeId,jdbcType=VARCHAR}
+      and UserID = #{userID,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dodonew.model.Pv_User">
+    update pv_User
+    set UserName = #{userName,jdbcType=CHAR},
+      UserGroupID = #{userGroupID,jdbcType=CHAR},
+      Password = #{password,jdbcType=CHAR},
+      StopFlag = #{stopFlag,jdbcType=BIT},
+      Remark = #{remark,jdbcType=CHAR},
+      LimitDiscount = #{limitDiscount,jdbcType=REAL},
+      AllowPresent = #{allowPresent,jdbcType=INTEGER},
+      AllowLock = #{allowLock,jdbcType=INTEGER},
+      UserPhone = #{userPhone,jdbcType=VARCHAR},
+      powerItem = #{powerItem,jdbcType=VARCHAR},
+      storeUserId = #{storeUserId,jdbcType=VARCHAR},
+      isGive = #{isGive,jdbcType=TINYINT},
+      giveMoney = #{giveMoney,jdbcType=DOUBLE},
+      thankWrite = #{thankWrite,jdbcType=VARCHAR},
+      openId = #{openId,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      createPeople = #{createPeople,jdbcType=CHAR}
+    where storeId = #{storeId,jdbcType=VARCHAR}
+      and UserID = #{userID,jdbcType=CHAR}
+  </update>
+</mapper>

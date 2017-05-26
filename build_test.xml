@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<project name="dataserver" default="zip" basedir=".">
+    <property name="classes" value="${basedir}/web/WEB-INF/classes"/>
+    <property name="build" value="${basedir}/build"/>
+    <property name="lib" value="${basedir}/web/WEB-INF/lib"/>
+    <property name="tomcat.lib" value="/home/webserver/tomcat5_teashop/server/lib"/>
+    <property name="tomcat.common.lib" value="/home/webserver/tomcat5_teashop/common/lib"/>
+    <property name="bak" value="/home/webserver/tomcat5_teashop/webapps/deminportal"/>
+
+    <path id="master-classpath">
+        <fileset dir="${lib}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.lib}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.common.lib}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="${classes}"/>
+    </target>
+
+    <target name="compile" depends="clean">
+        <mkdir dir="${classes}"/>
+        <javac srcdir="${basedir}/src" destdir="${classes}" includeantruntime="on" debug="true"
+               debuglevel="source,lines,vars">
+            <classpath refid="master-classpath"/>
+            <compilerarg line="-encoding utf-8 "/>
+        </javac>
+    </target>
+
+    <target name="zip" depends="compile">
+        <copy file="${bak}/haowangPay_api_release.zip" tofile="${build}/haowangPay_api_test.zip"/>
+        <zip destfile="${build}/haowangPay_api_test.zip" update="true">
+            <fileset dir="${basedir}/WebContent">
+                <!-- 升级不可删除(特殊情况以外)-->
+                <exclude name="WEB-INF/config/**"/><!--升级时不可删除本行代码！-->
+            </fileset>
+        </zip>
+    </target>
+</project>
+
+

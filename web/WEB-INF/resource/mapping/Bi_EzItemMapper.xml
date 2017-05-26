@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.Bi_EzItemMapper">
+    <resultMap id="BaseResultMap" type="com.dodonew.model.Bi_EzItem">
+        <id column="ezItemId" jdbcType="INTEGER" property="ezItemId"/>
+        <result column="storeId" jdbcType="VARCHAR" property="storeId"/>
+        <result column="billId" jdbcType="VARCHAR" property="billId"/>
+        <result column="goodsCustomerId" jdbcType="BIGINT" property="goodsCustomerId"/>
+        <result column="specCustomerId" jdbcType="BIGINT" property="specCustomerId"/>
+        <result column="goodsId" jdbcType="BIGINT" property="goodsId"/>
+        <result column="goodsName" jdbcType="VARCHAR" property="goodsName"/>
+        <result column="goodsCode" jdbcType="VARCHAR" property="goodsCode"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="goodsSpec" jdbcType="VARCHAR" property="goodsSpec"/>
+        <result column="engName" jdbcType="VARCHAR" property="engName"/>
+        <result column="goodsNum" jdbcType="INTEGER" property="goodsNum"/>
+        <result column="itemRemark" jdbcType="VARCHAR" property="itemRemark"/>
+        <result column="isDiscount" jdbcType="TINYINT" property="isDiscount"/>
+        <result column="isCoupon" jdbcType="TINYINT" property="isCoupon"/>
+        <result column="discountMoney" jdbcType="DECIMAL" property="discountMoney"/>
+        <result column="discountPercent" jdbcType="DECIMAL" property="discountPercent"/>
+        <result column="crateTime" jdbcType="TIMESTAMP" property="crateTime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ezItemId, storeId, billId, goodsCustomerId, specCustomerId, goodsId, goodsName, goodsCode, 
+    price, goodsSpec, engName, goodsNum, itemRemark, isDiscount, isCoupon, discountMoney, 
+    discountPercent, crateTime, updateTime, status
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from bi_EzItem
+        where ezItemId = #{ezItemId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bi_EzItem
+    where ezItemId = #{ezItemId,jdbcType=INTEGER}
+  </delete>
+
+    <select id="selectByOrderId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bi_EzItem
+        WHERE billId=#{orderId}
+    </select>
+
+    <insert id="insert" parameterType="com.dodonew.model.Bi_EzItem">
+    insert into bi_EzItem (ezItemId, storeId, billId, 
+      goodsCustomerId, specCustomerId, goodsId, 
+      goodsName, goodsCode, price, 
+      goodsSpec, engName, goodsNum, 
+      itemRemark, isDiscount, isCoupon, 
+      discountMoney, discountPercent, crateTime, 
+      updateTime, status)
+    values (#{ezItemId,jdbcType=INTEGER}, #{storeId,jdbcType=VARCHAR}, #{billId,jdbcType=VARCHAR}, 
+      #{goodsCustomerId,jdbcType=BIGINT}, #{specCustomerId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, 
+      #{goodsName,jdbcType=VARCHAR}, #{goodsCode,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{goodsSpec,jdbcType=VARCHAR}, #{engName,jdbcType=VARCHAR}, #{goodsNum,jdbcType=INTEGER}, 
+      #{itemRemark,jdbcType=VARCHAR}, #{isDiscount,jdbcType=TINYINT}, #{isCoupon,jdbcType=TINYINT}, 
+      #{discountMoney,jdbcType=DECIMAL}, #{discountPercent,jdbcType=DECIMAL}, #{crateTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT})
+  </insert>
+    <insert id="insertSelective" parameterType="com.dodonew.model.Bi_EzItem">
+        insert into bi_EzItem
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ezItemId != null">
+                ezItemId,
+            </if>
+            <if test="storeId != null">
+                storeId,
+            </if>
+            <if test="billId != null">
+                billId,
+            </if>
+            <if test="goodsCustomerId != null">
+                goodsCustomerId,
+            </if>
+            <if test="specCustomerId != null">
+                specCustomerId,
+            </if>
+            <if test="goodsId != null">
+                goodsId,
+            </if>
+            <if test="goodsName != null">
+                goodsName,
+            </if>
+            <if test="goodsCode != null">
+                goodsCode,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="goodsSpec != null">
+                goodsSpec,
+            </if>
+            <if test="engName != null">
+                engName,
+            </if>
+            <if test="goodsNum != null">
+                goodsNum,
+            </if>
+            <if test="itemRemark != null">
+                itemRemark,
+            </if>
+            <if test="isDiscount != null">
+                isDiscount,
+            </if>
+            <if test="isCoupon != null">
+                isCoupon,
+            </if>
+            <if test="discountMoney != null">
+                discountMoney,
+            </if>
+            <if test="discountPercent != null">
+                discountPercent,
+            </if>
+            <if test="crateTime != null">
+                crateTime,
+            </if>
+            <if test="updateTime != null">
+                updateTime,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ezItemId != null">
+                #{ezItemId,jdbcType=INTEGER},
+            </if>
+            <if test="storeId != null">
+                #{storeId,jdbcType=VARCHAR},
+            </if>
+            <if test="billId != null">
+                #{billId,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsCustomerId != null">
+                #{goodsCustomerId,jdbcType=BIGINT},
+            </if>
+            <if test="specCustomerId != null">
+                #{specCustomerId,jdbcType=BIGINT},
+            </if>
+            <if test="goodsId != null">
+                #{goodsId,jdbcType=BIGINT},
+            </if>
+            <if test="goodsName != null">
+                #{goodsName,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsCode != null">
+                #{goodsCode,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="goodsSpec != null">
+                #{goodsSpec,jdbcType=VARCHAR},
+            </if>
+            <if test="engName != null">
+                #{engName,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsNum != null">
+                #{goodsNum,jdbcType=INTEGER},
+            </if>
+            <if test="itemRemark != null">
+                #{itemRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="isDiscount != null">
+                #{isDiscount,jdbcType=TINYINT},
+            </if>
+            <if test="isCoupon != null">
+                #{isCoupon,jdbcType=TINYINT},
+            </if>
+            <if test="discountMoney != null">
+                #{discountMoney,jdbcType=DECIMAL},
+            </if>
+            <if test="discountPercent != null">
+                #{discountPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="crateTime != null">
+                #{crateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dodonew.model.Bi_EzItem">
+        update bi_EzItem
+        <set>
+            <if test="storeId != null">
+                storeId = #{storeId,jdbcType=VARCHAR},
+            </if>
+            <if test="billId != null">
+                billId = #{billId,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsCustomerId != null">
+                goodsCustomerId = #{goodsCustomerId,jdbcType=BIGINT},
+            </if>
+            <if test="specCustomerId != null">
+                specCustomerId = #{specCustomerId,jdbcType=BIGINT},
+            </if>
+            <if test="goodsId != null">
+                goodsId = #{goodsId,jdbcType=BIGINT},
+            </if>
+            <if test="goodsName != null">
+                goodsName = #{goodsName,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsCode != null">
+                goodsCode = #{goodsCode,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="goodsSpec != null">
+                goodsSpec = #{goodsSpec,jdbcType=VARCHAR},
+            </if>
+            <if test="engName != null">
+                engName = #{engName,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsNum != null">
+                goodsNum = #{goodsNum,jdbcType=INTEGER},
+            </if>
+            <if test="itemRemark != null">
+                itemRemark = #{itemRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="isDiscount != null">
+                isDiscount = #{isDiscount,jdbcType=TINYINT},
+            </if>
+            <if test="isCoupon != null">
+                isCoupon = #{isCoupon,jdbcType=TINYINT},
+            </if>
+            <if test="discountMoney != null">
+                discountMoney = #{discountMoney,jdbcType=DECIMAL},
+            </if>
+            <if test="discountPercent != null">
+                discountPercent = #{discountPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="crateTime != null">
+                crateTime = #{crateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                updateTime = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+        </set>
+        where ezItemId = #{ezItemId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dodonew.model.Bi_EzItem">
+    update bi_EzItem
+    set storeId = #{storeId,jdbcType=VARCHAR},
+      billId = #{billId,jdbcType=VARCHAR},
+      goodsCustomerId = #{goodsCustomerId,jdbcType=BIGINT},
+      specCustomerId = #{specCustomerId,jdbcType=BIGINT},
+      goodsId = #{goodsId,jdbcType=BIGINT},
+      goodsName = #{goodsName,jdbcType=VARCHAR},
+      goodsCode = #{goodsCode,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      goodsSpec = #{goodsSpec,jdbcType=VARCHAR},
+      engName = #{engName,jdbcType=VARCHAR},
+      goodsNum = #{goodsNum,jdbcType=INTEGER},
+      itemRemark = #{itemRemark,jdbcType=VARCHAR},
+      isDiscount = #{isDiscount,jdbcType=TINYINT},
+      isCoupon = #{isCoupon,jdbcType=TINYINT},
+      discountMoney = #{discountMoney,jdbcType=DECIMAL},
+      discountPercent = #{discountPercent,jdbcType=DECIMAL},
+      crateTime = #{crateTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT}
+    where ezItemId = #{ezItemId,jdbcType=INTEGER}
+  </update>
+</mapper>

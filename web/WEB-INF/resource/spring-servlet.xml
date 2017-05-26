@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- API验证   该拦截器不起作用  已用Filter代替 -->
+    <!--<mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*/*.do" />
+            <bean class="com.dodonew.interceptor.APIInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+
+    <!-- 开启MVC注解 -->
+    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="false">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+            <bean class="com.dodonew.utils.JsonConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 开启静态资源访问 -->
+    <mvc:default-servlet-handler/>
+
+    <mvc:resources mapping="/wxChatPay/*.txt" location="/WEB-INF/checkTxt/"/>
+
+    <!-- aop切面   用户记录访问日志 切记  该配置只能在初始化的配里面 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+
+    <!-- 初始化加载容器排除掉Service层,防止事务失效 -->
+    <context:component-scan base-package="com.dodonew">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+
+
+    <!-- 用于支持servlet jsp视图解析 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- prefix和suffix，查找视图页面的前缀和后缀，比如传进来的逻辑视图名为hello，则该jsp视图页面应该存放在"WEB-INF/jsp/hello.jsp"-->
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>

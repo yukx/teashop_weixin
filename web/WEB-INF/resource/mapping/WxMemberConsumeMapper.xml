@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.WxMemberConsumeMapper">
+  <resultMap id="BaseResultMap" type="com.dodonew.model.WxMemberConsume">
+    <id column="m_serialNO" jdbcType="INTEGER" property="serialno" />
+    <result column="m_memberId" jdbcType="INTEGER" property="memberid" />
+    <result column="m_consumeMoney" jdbcType="DOUBLE" property="consumemoney" />
+    <result column="m_consumeType" jdbcType="TINYINT" property="consumetype" />
+    <result column="m_createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="m_remark" jdbcType="VARCHAR" property="remark" />
+    <result column="m_storeId" jdbcType="VARCHAR" property="storeid" />
+    <result column="m_lastBalance" jdbcType="REAL" property="lastbalance" />
+    <result column="m_billId" jdbcType="CHAR" property="billid" />
+    <result column="m_operator" jdbcType="VARCHAR" property="operator" />
+    <result column="m_isRoam" jdbcType="INTEGER" property="isroam" />
+    <result column="m_roamStoreId" jdbcType="INTEGER" property="roamstoreid" />
+    <result column="m_roamStoreName" jdbcType="VARCHAR" property="roamstorename" />
+    <result column="m_giveMoney" jdbcType="DOUBLE" property="givemoney" />
+    <result column="m_discount" jdbcType="DOUBLE" property="discount" />
+    <result column="m_orgMoney" jdbcType="DOUBLE" property="orgmoney" />
+    <result column="m_favMoney" jdbcType="DOUBLE" property="favmoney" />
+    <result column="m_orderId" jdbcType="VARCHAR" property="orderid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    m.serialNO as m_serialNO, m.memberId as m_memberId, m.consumeMoney as m_consumeMoney, 
+    m.consumeType as m_consumeType, m.createTime as m_createTime, m.remark as m_remark, 
+    m.storeId as m_storeId, m.lastBalance as m_lastBalance, m.billId as m_billId, m.operator as m_operator, 
+    m.isRoam as m_isRoam, m.roamStoreId as m_roamStoreId, m.roamStoreName as m_roamStoreName, 
+    m.giveMoney as m_giveMoney, m.discount as m_discount, m.orgMoney as m_orgMoney, m.favMoney as m_favMoney, 
+    m.orderId as m_orderId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WX_MemberConsume m
+    where m.serialNO = #{serialno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from WX_MemberConsume
+    where serialNO = #{serialno,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dodonew.model.WxMemberConsume">
+    insert into WX_MemberConsume (serialNO, memberId, consumeMoney, 
+      consumeType, createTime, remark, 
+      storeId, lastBalance, billId, 
+      operator, isRoam, roamStoreId, 
+      roamStoreName, giveMoney, discount, 
+      orgMoney, favMoney, orderId
+      )
+    values (#{serialno,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{consumemoney,jdbcType=REAL}, 
+      #{consumetype,jdbcType=TINYINT}, #{createtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{storeid,jdbcType=VARCHAR}, #{lastbalance,jdbcType=REAL}, #{billid,jdbcType=CHAR}, 
+      #{operator,jdbcType=VARCHAR}, #{isroam,jdbcType=INTEGER}, #{roamstoreid,jdbcType=INTEGER}, 
+      #{roamstorename,jdbcType=VARCHAR}, #{givemoney,jdbcType=DOUBLE}, #{discount,jdbcType=DOUBLE}, 
+      #{orgmoney,jdbcType=DOUBLE}, #{favmoney,jdbcType=DOUBLE}, #{orderid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dodonew.model.WxMemberConsume" useGeneratedKeys="true" keyProperty="serialno">
+    insert into WX_MemberConsume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="serialno != null">
+        serialNO,
+      </if>
+      <if test="memberid != null">
+        memberId,
+      </if>
+      <if test="consumemoney != null">
+        consumeMoney,
+      </if>
+      <if test="consumetype != null">
+        consumeType,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="storeid != null">
+        storeId,
+      </if>
+      <if test="lastbalance != null">
+        lastBalance,
+      </if>
+      <if test="billid != null">
+        billId,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="isroam != null">
+        isRoam,
+      </if>
+      <if test="roamstoreid != null">
+        roamStoreId,
+      </if>
+      <if test="roamstorename != null">
+        roamStoreName,
+      </if>
+      <if test="givemoney != null">
+        giveMoney,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="orgmoney != null">
+        orgMoney,
+      </if>
+      <if test="favmoney != null">
+        favMoney,
+      </if>
+      <if test="orderid != null">
+        orderId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="serialno != null">
+        #{serialno,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null">
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="consumemoney != null">
+        #{consumemoney,jdbcType=REAL},
+      </if>
+      <if test="consumetype != null">
+        #{consumetype,jdbcType=TINYINT},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="storeid != null">
+        #{storeid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastbalance != null">
+        #{lastbalance,jdbcType=REAL},
+      </if>
+      <if test="billid != null">
+        #{billid,jdbcType=CHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isroam != null">
+        #{isroam,jdbcType=INTEGER},
+      </if>
+      <if test="roamstoreid != null">
+        #{roamstoreid,jdbcType=INTEGER},
+      </if>
+      <if test="roamstorename != null">
+        #{roamstorename,jdbcType=VARCHAR},
+      </if>
+      <if test="givemoney != null">
+        #{givemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="orgmoney != null">
+        #{orgmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="favmoney != null">
+        #{favmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dodonew.model.WxMemberConsume">
+    update WX_MemberConsume
+    <set>
+      <if test="memberid != null">
+        memberId = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="consumemoney != null">
+        consumeMoney = #{consumemoney,jdbcType=REAL},
+      </if>
+      <if test="consumetype != null">
+        consumeType = #{consumetype,jdbcType=TINYINT},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="storeid != null">
+        storeId = #{storeid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastbalance != null">
+        lastBalance = #{lastbalance,jdbcType=REAL},
+      </if>
+      <if test="billid != null">
+        billId = #{billid,jdbcType=CHAR},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="isroam != null">
+        isRoam = #{isroam,jdbcType=INTEGER},
+      </if>
+      <if test="roamstoreid != null">
+        roamStoreId = #{roamstoreid,jdbcType=INTEGER},
+      </if>
+      <if test="roamstorename != null">
+        roamStoreName = #{roamstorename,jdbcType=VARCHAR},
+      </if>
+      <if test="givemoney != null">
+        giveMoney = #{givemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="orgmoney != null">
+        orgMoney = #{orgmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="favmoney != null">
+        favMoney = #{favmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderid != null">
+        orderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where serialNO = #{serialno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dodonew.model.WxMemberConsume">
+    update WX_MemberConsume
+    set memberId = #{memberid,jdbcType=INTEGER},
+      consumeMoney = #{consumemoney,jdbcType=REAL},
+      consumeType = #{consumetype,jdbcType=TINYINT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      storeId = #{storeid,jdbcType=VARCHAR},
+      lastBalance = #{lastbalance,jdbcType=REAL},
+      billId = #{billid,jdbcType=CHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      isRoam = #{isroam,jdbcType=INTEGER},
+      roamStoreId = #{roamstoreid,jdbcType=INTEGER},
+      roamStoreName = #{roamstorename,jdbcType=VARCHAR},
+      giveMoney = #{givemoney,jdbcType=DOUBLE},
+      discount = #{discount,jdbcType=DOUBLE},
+      orgMoney = #{orgmoney,jdbcType=DOUBLE},
+      favMoney = #{favmoney,jdbcType=DOUBLE},
+      orderId = #{orderid,jdbcType=VARCHAR}
+    where serialNO = #{serialno,jdbcType=INTEGER}
+  </update>
+</mapper>

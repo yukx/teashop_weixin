@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="gb2312"?>
+	
+<project name="dataserver" default="zip" basedir=".">
+		<property  name ="classes" value ="${basedir}/web/WEB-INF/classes"/>
+	    <property  name ="build" value ="${basedir}/../haowang_api_test/build"/>
+	    <property  name ="lib" value ="${basedir}/web/WEB-INF/lib"/>
+		<property name="tomcat.lib" value="/home/webserver/tomcat5_demin/server/lib" />
+		<property name="tomcat.common.lib" value="/home/webserver/tomcat5_demin/common/lib" />
+	    <property  name ="bak" value ="/home/webserver/tomcat5_teashop/webapps/deminportal"/>
+
+	<path id="master-classpath">
+			<fileset dir="${lib}">
+				<include name="*.jar" />
+			</fileset>
+		<fileset dir="${tomcat.lib}">
+			<include name="*.jar" />
+		</fileset>	
+		<fileset dir="${tomcat.common.lib}">
+			<include name="*.jar" />
+		</fileset>	
+	</path>
+
+	 <target name ="print-var" >
+ 		<echo>print var ${build}</echo>
+	  </target>  
+
+	 <target name ="zip" >
+	 	<copy file="${bak}/haowangPay_api_release.zip" tofile="${bak}/haowangPay_api_release_bak.zip"/>
+ 		<copy file="${build}/haowangPay_api_test.zip" tofile="${bak}/haowangPay_api_release.zip"/>
+	  </target>
+</project>
+
+

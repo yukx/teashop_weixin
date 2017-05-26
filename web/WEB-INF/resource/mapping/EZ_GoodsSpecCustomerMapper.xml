@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.EZ_GoodsSpecCustomerMapper">
+  <resultMap id="BaseResultMap" type="com.dodonew.model.EZ_GoodsSpecCustomer">
+    <id column="specCustomerId" jdbcType="BIGINT" property="specCustomerId" />
+    <result column="storeId" jdbcType="VARCHAR" property="storeId" />
+    <result column="goodsCode" jdbcType="VARCHAR" property="goodsCode" />
+    <result column="goodsName" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goodsSpec" jdbcType="VARCHAR" property="goodsSpec" />
+    <result column="goodsCustomerId" jdbcType="BIGINT" property="goodsCustomerId" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="crateTime" jdbcType="TIMESTAMP" property="crateTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    specCustomerId, storeId, goodsCode, goodsName, goodsSpec, goodsCustomerId, price, 
+    crateTime, updateTime, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from EZ_GoodsSpecCustomer
+    where specCustomerId = #{specCustomerId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from EZ_GoodsSpecCustomer
+    where specCustomerId = #{specCustomerId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.dodonew.model.EZ_GoodsSpecCustomer">
+    insert into EZ_GoodsSpecCustomer (specCustomerId, storeId, goodsCode, 
+      goodsName, goodsSpec, goodsCustomerId, 
+      price, crateTime, updateTime, 
+      status)
+    values (#{specCustomerId,jdbcType=BIGINT}, #{storeId,jdbcType=VARCHAR}, #{goodsCode,jdbcType=VARCHAR}, 
+      #{goodsName,jdbcType=VARCHAR}, #{goodsSpec,jdbcType=VARCHAR}, #{goodsCustomerId,jdbcType=BIGINT}, 
+      #{price,jdbcType=DECIMAL}, #{crateTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dodonew.model.EZ_GoodsSpecCustomer">
+    insert into EZ_GoodsSpecCustomer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="specCustomerId != null">
+        specCustomerId,
+      </if>
+      <if test="storeId != null">
+        storeId,
+      </if>
+      <if test="goodsCode != null">
+        goodsCode,
+      </if>
+      <if test="goodsName != null">
+        goodsName,
+      </if>
+      <if test="goodsSpec != null">
+        goodsSpec,
+      </if>
+      <if test="goodsCustomerId != null">
+        goodsCustomerId,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="crateTime != null">
+        crateTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="specCustomerId != null">
+        #{specCustomerId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSpec != null">
+        #{goodsSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCustomerId != null">
+        #{goodsCustomerId,jdbcType=BIGINT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="crateTime != null">
+        #{crateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dodonew.model.EZ_GoodsSpecCustomer">
+    update EZ_GoodsSpecCustomer
+    <set>
+      <if test="storeId != null">
+        storeId = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        goodsCode = #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null">
+        goodsName = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSpec != null">
+        goodsSpec = #{goodsSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCustomerId != null">
+        goodsCustomerId = #{goodsCustomerId,jdbcType=BIGINT},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="crateTime != null">
+        crateTime = #{crateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where specCustomerId = #{specCustomerId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dodonew.model.EZ_GoodsSpecCustomer">
+    update EZ_GoodsSpecCustomer
+    set storeId = #{storeId,jdbcType=VARCHAR},
+      goodsCode = #{goodsCode,jdbcType=VARCHAR},
+      goodsName = #{goodsName,jdbcType=VARCHAR},
+      goodsSpec = #{goodsSpec,jdbcType=VARCHAR},
+      goodsCustomerId = #{goodsCustomerId,jdbcType=BIGINT},
+      price = #{price,jdbcType=DECIMAL},
+      crateTime = #{crateTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT}
+    where specCustomerId = #{specCustomerId,jdbcType=BIGINT}
+  </update>
+</mapper>

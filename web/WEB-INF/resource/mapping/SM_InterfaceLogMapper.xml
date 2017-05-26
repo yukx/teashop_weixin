@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.SM_InterfaceLogMapper">
+  <resultMap id="BaseResultMap" type="com.dodonew.model.SM_InterfaceLog">
+    <result column="logTime" jdbcType="VARCHAR" property="logTime" />
+    <result column="logRequetParam" jdbcType="VARCHAR" property="logRequetParam" />
+    <result column="logReturnData" jdbcType="VARCHAR" property="logReturnData" />
+    <result column="logReturnStatus" jdbcType="VARCHAR" property="logReturnStatus" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="className" jdbcType="VARCHAR" property="className" />
+    <result column="methodName" jdbcType="VARCHAR" property="methodName" />
+    <result column="timeConsume" jdbcType="BIGINT" property="timeConsume" />
+    <result column="devId" jdbcType="VARCHAR" property="devId" />
+  </resultMap>
+
+
+  <insert id="insert" parameterType="com.dodonew.model.SM_InterfaceLog">
+    insert into SM_InterfaceLog (logTime, logReturnStatus, remark, 
+      className, methodName, timeConsume, 
+      devId, logRequetParam, logReturnData
+      )
+    values (#{logTime,jdbcType=TIMESTAMP}, #{logReturnStatus,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
+      #{className,jdbcType=VARCHAR}, #{methodName,jdbcType=VARCHAR}, #{timeConsume,jdbcType=BIGINT},
+      #{devId,jdbcType=VARCHAR}, #{logRequetParam,jdbcType=LONGVARCHAR}, #{logReturnData,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+</mapper>

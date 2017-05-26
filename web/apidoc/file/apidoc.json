@@ -1,0 +1,15 @@
+{
+  "name": "好旺API接口文档",
+  "version": "0.0.1",
+  "description": "",
+  "title": "好旺API接口文档",
+  "url" : "http://219.133.59.27:9101/haowangPay_api",
+  "header": {
+    "title": "接口规则概要说明",
+    "filename": "header.md"
+  },
+  "template": {
+  	"withCompare": true,
+  	"withGenerator": true
+  }
+}

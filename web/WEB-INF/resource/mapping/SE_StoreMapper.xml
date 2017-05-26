@@ -1,0 +1,1287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.SE_StoreMapper">
+  <resultMap id="BaseResultMap" type="com.dodonew.model.SE_Store">
+    <id column="storeId" jdbcType="VARCHAR" property="storeId" />
+    <result column="storeName" jdbcType="VARCHAR" property="storeName" />
+    <result column="storeOwnerld" jdbcType="BIGINT" property="storeOwnerld" />
+    <result column="parentStoreId" jdbcType="INTEGER" property="parentStoreId" />
+    <result column="storeType" jdbcType="TINYINT" property="storeType" />
+    <result column="areaId" jdbcType="INTEGER" property="areaId" />
+    <result column="storeAddr" jdbcType="VARCHAR" property="storeAddr" />
+    <result column="storeLongitude" jdbcType="VARCHAR" property="storeLongitude" />
+    <result column="storeLatitude" jdbcType="VARCHAR" property="storeLatitude" />
+    <result column="storePerson" jdbcType="VARCHAR" property="storePerson" />
+    <result column="storePhone" jdbcType="VARCHAR" property="storePhone" />
+    <result column="storeLegalPerson" jdbcType="VARCHAR" property="storeLegalPerson" />
+    <result column="storePreviou" jdbcType="VARCHAR" property="storePreviou" />
+    <result column="storeLevel" jdbcType="TINYINT" property="storeLevel" />
+    <result column="isEnabled" jdbcType="TINYINT" property="isEnabled" />
+    <result column="smallPicPath" jdbcType="VARCHAR" property="smallPicPath" />
+    <result column="bigPicPath" jdbcType="VARCHAR" property="bigPicPath" />
+    <result column="isRecom" jdbcType="TINYINT" property="isRecom" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="haveStorage" jdbcType="TINYINT" property="haveStorage" />
+    <result column="signNumber" jdbcType="INTEGER" property="signNumber" />
+    <result column="webAddress" jdbcType="VARCHAR" property="webAddress" />
+    <result column="storeNote" jdbcType="VARCHAR" property="storeNote" />
+    <result column="activityPicPath" jdbcType="VARCHAR" property="activityPicPath" />
+    <result column="scrollTitle" jdbcType="VARCHAR" property="scrollTitle" />
+    <result column="deposit" jdbcType="INTEGER" property="deposit" />
+    <result column="balanceRate" jdbcType="INTEGER" property="balanceRate" />
+    <result column="licensePicPath" jdbcType="VARCHAR" property="licensePicPath" />
+    <result column="permitPicPath" jdbcType="VARCHAR" property="permitPicPath" />
+    <result column="takeCareManName" jdbcType="VARCHAR" property="takeCareManName" />
+    <result column="takeCareManPhone" jdbcType="VARCHAR" property="takeCareManPhone" />
+    <result column="repairManName" jdbcType="VARCHAR" property="repairManName" />
+    <result column="repairManPhone" jdbcType="VARCHAR" property="repairManPhone" />
+    <result column="servicePhone" jdbcType="VARCHAR" property="servicePhone" />
+    <result column="devLastOutTime" jdbcType="TIMESTAMP" property="devLastOutTime" />
+    <result column="stockPrice" jdbcType="INTEGER" property="stockPrice" />
+    <result column="userGetOutRate" jdbcType="INTEGER" property="userGetOutRate" />
+    <result column="devCanBuyMark" jdbcType="TINYINT" property="devCanBuyMark" />
+    <result column="showPhoneText" jdbcType="TINYINT" property="showPhoneText" />
+    <result column="devDebugStatus" jdbcType="TINYINT" property="devDebugStatus" />
+    <result column="callDevIp" jdbcType="VARCHAR" property="callDevIp" />
+    <result column="domainId" jdbcType="INTEGER" property="domainId" />
+    <result column="netbarId" jdbcType="INTEGER" property="netbarId" />
+    <result column="businessType" jdbcType="INTEGER" property="businessType" />
+    <result column="showOrHide" jdbcType="INTEGER" property="showOrHide" />
+    <result column="lastConsumeTime" jdbcType="TIMESTAMP" property="lastConsumeTime" />
+    <result column="isTest" jdbcType="INTEGER" property="isTest" />
+    <result column="storeArea" jdbcType="INTEGER" property="storeArea" />
+    <result column="storeDetail" jdbcType="VARCHAR" property="storeDetail" />
+    <result column="isPay" jdbcType="INTEGER" property="isPay" />
+    <result column="isPoint" jdbcType="INTEGER" property="isPoint" />
+    <result column="payMethod" jdbcType="INTEGER" property="payMethod" />
+    <result column="notifyUrl" jdbcType="VARCHAR" property="notifyUrl" />
+    <result column="appKey" jdbcType="VARCHAR" property="appKey" />
+    <result column="workTime" jdbcType="VARCHAR" property="workTime" />
+    <result column="isWeChatPay" jdbcType="INTEGER" property="isWeChatPay" />
+    <result column="isNeCardPay" jdbcType="INTEGER" property="isNeCardPay" />
+    <result column="rate" jdbcType="REAL" property="rate" />
+    <result column="isDayReportDepart" jdbcType="INTEGER" property="isDayReportDepart" />
+    <result column="maSingleMode" jdbcType="INTEGER" property="maSingleMode" />
+    <result column="ccSingleMode" jdbcType="INTEGER" property="ccSingleMode" />
+    <result column="jcSingleMode" jdbcType="INTEGER" property="jcSingleMode" />
+    <result column="feSingleMode" jdbcType="INTEGER" property="feSingleMode" />
+    <result column="isBrushID" jdbcType="INTEGER" property="isBrushID" />
+    <result column="viceCashierNum" jdbcType="INTEGER" property="viceCashierNum" />
+    <result column="agentId" jdbcType="VARCHAR" property="agentId" />
+    <result column="newExpireDate" jdbcType="TIMESTAMP" property="newExpireDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="statusMessage" jdbcType="VARCHAR" property="statusMessage" />
+    <result column="creditsForConsume" jdbcType="INTEGER" property="creditsForConsume" />
+    <result column="ztSingleMode" jdbcType="INTEGER" property="ztSingleMode" />
+    <result column="tcSingleMode" jdbcType="INTEGER" property="tcSingleMode" />
+    <result column="cucSingleMode" jdbcType="INTEGER" property="cucSingleMode" />
+    <result column="jqSingleMode" jdbcType="INTEGER" property="jqSingleMode" />
+    <result column="jzSingleMode" jdbcType="INTEGER" property="jzSingleMode" />
+    <result column="mdSingleMode" jdbcType="INTEGER" property="mdSingleMode" />
+    <result column="isZhiFuBaoPay" jdbcType="INTEGER" property="isZhiFuBaoPay" />
+    <result column="chainId" jdbcType="INTEGER" property="chainId" />
+    <result column="weixinPayType" jdbcType="INTEGER" property="weixinPayType" />
+    <result column="isUseOrder" jdbcType="INTEGER" property="isUseOrder" />
+    <result column="subMchId" jdbcType="CHAR" property="subMchId" />
+    <result column="provinceCode" jdbcType="VARCHAR" property="provinceCode" />
+    <result column="cityCode" jdbcType="VARCHAR" property="cityCode" />
+    <result column="countyCode" jdbcType="VARCHAR" property="countyCode" />
+    <result column="townCode" jdbcType="VARCHAR" property="townCode" />
+    <result column="storeLocationId" jdbcType="VARCHAR" property="storeLocationId" />
+    <result column="storeNotice" jdbcType="VARCHAR" property="storeNotice" />
+    <result column="isProvideInvoice" jdbcType="INTEGER" property="isProvideInvoice" />
+    <result column="signKey" jdbcType="VARCHAR" property="signKey" />
+    <result column="printSlogan" jdbcType="VARCHAR" property="printSlogan" />
+    <result column="industryTypeId" jdbcType="VARCHAR" property="industryTypeId" />
+    <result column="styleOfCooking" jdbcType="VARCHAR" property="styleOfCooking" />
+    <result column="markPosition" jdbcType="VARCHAR" property="markPosition" />
+    <result column="onlinPayValidateState" jdbcType="INTEGER" property="onlinPayValidateState" />
+    <result column="isHLS" jdbcType="INTEGER" property="isHLS" />
+    <result column="starNum" jdbcType="DOUBLE" property="starNum" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.dodonew.model.SE_Store">
+    <result column="storeDesc" jdbcType="LONGVARCHAR" property="storeDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    storeId, storeName, storeOwnerld, parentStoreId, storeType, areaId, storeAddr, storeLongitude, 
+    storeLatitude, storePerson, storePhone, storeLegalPerson, storePreviou, storeLevel, 
+    isEnabled, smallPicPath, bigPicPath, isRecom, createTime, haveStorage, signNumber, 
+    webAddress, storeNote, activityPicPath, scrollTitle, deposit, balanceRate, licensePicPath, 
+    permitPicPath, takeCareManName, takeCareManPhone, repairManName, repairManPhone, 
+    servicePhone, devLastOutTime, stockPrice, userGetOutRate, devCanBuyMark, showPhoneText, 
+    devDebugStatus, callDevIp, domainId, netbarId, businessType, showOrHide, lastConsumeTime, 
+    isTest, storeArea, storeDetail, isPay, isPoint, payMethod, notifyUrl, appKey, workTime, 
+    isWeChatPay, isNeCardPay, rate, isDayReportDepart, maSingleMode, ccSingleMode, jcSingleMode, 
+    feSingleMode, isBrushID, viceCashierNum, agentId, newExpireDate, status, statusMessage, 
+    creditsForConsume, ztSingleMode, tcSingleMode, cucSingleMode, jqSingleMode, jzSingleMode, 
+    mdSingleMode, isZhiFuBaoPay, chainId, weixinPayType, isUseOrder, subMchId, provinceCode, 
+    cityCode, countyCode, townCode, storeLocationId, storeNotice, isProvideInvoice, signKey, 
+    printSlogan, industryTypeId, styleOfCooking, markPosition, onlinPayValidateState, 
+    isHLS, starNum
+  </sql>
+  <sql id="Blob_Column_List">
+    storeDesc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from SE_Store
+    where storeId = #{storeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SE_Store
+    where storeId = #{storeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dodonew.model.SE_Store">
+    insert into SE_Store (storeId, storeName, storeOwnerld, 
+      parentStoreId, storeType, areaId, 
+      storeAddr, storeLongitude, storeLatitude, 
+      storePerson, storePhone, storeLegalPerson, 
+      storePreviou, storeLevel, isEnabled, 
+      smallPicPath, bigPicPath, isRecom, 
+      createTime, haveStorage, signNumber, 
+      webAddress, storeNote, activityPicPath, 
+      scrollTitle, deposit, balanceRate, 
+      licensePicPath, permitPicPath, takeCareManName, 
+      takeCareManPhone, repairManName, repairManPhone, 
+      servicePhone, devLastOutTime, stockPrice, 
+      userGetOutRate, devCanBuyMark, showPhoneText, 
+      devDebugStatus, callDevIp, domainId, 
+      netbarId, businessType, showOrHide, 
+      lastConsumeTime, isTest, storeArea, 
+      storeDetail, isPay, isPoint, 
+      payMethod, notifyUrl, appKey, 
+      workTime, isWeChatPay, isNeCardPay, 
+      rate, isDayReportDepart, maSingleMode, 
+      ccSingleMode, jcSingleMode, feSingleMode, 
+      isBrushID, viceCashierNum, agentId, 
+      newExpireDate, status, statusMessage, 
+      creditsForConsume, ztSingleMode, tcSingleMode, 
+      cucSingleMode, jqSingleMode, jzSingleMode, 
+      mdSingleMode, isZhiFuBaoPay, chainId, 
+      weixinPayType, isUseOrder, subMchId, 
+      provinceCode, cityCode, countyCode, 
+      townCode, storeLocationId, storeNotice, 
+      isProvideInvoice, signKey, printSlogan, 
+      industryTypeId, styleOfCooking, markPosition, 
+      onlinPayValidateState, isHLS, starNum, 
+      storeDesc)
+    values (#{storeId,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, #{storeOwnerld,jdbcType=BIGINT}, 
+      #{parentStoreId,jdbcType=INTEGER}, #{storeType,jdbcType=TINYINT}, #{areaId,jdbcType=INTEGER}, 
+      #{storeAddr,jdbcType=VARCHAR}, #{storeLongitude,jdbcType=VARCHAR}, #{storeLatitude,jdbcType=VARCHAR}, 
+      #{storePerson,jdbcType=VARCHAR}, #{storePhone,jdbcType=VARCHAR}, #{storeLegalPerson,jdbcType=VARCHAR}, 
+      #{storePreviou,jdbcType=VARCHAR}, #{storeLevel,jdbcType=TINYINT}, #{isEnabled,jdbcType=TINYINT}, 
+      #{smallPicPath,jdbcType=VARCHAR}, #{bigPicPath,jdbcType=VARCHAR}, #{isRecom,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{haveStorage,jdbcType=TINYINT}, #{signNumber,jdbcType=INTEGER}, 
+      #{webAddress,jdbcType=VARCHAR}, #{storeNote,jdbcType=VARCHAR}, #{activityPicPath,jdbcType=VARCHAR}, 
+      #{scrollTitle,jdbcType=VARCHAR}, #{deposit,jdbcType=INTEGER}, #{balanceRate,jdbcType=INTEGER}, 
+      #{licensePicPath,jdbcType=VARCHAR}, #{permitPicPath,jdbcType=VARCHAR}, #{takeCareManName,jdbcType=VARCHAR}, 
+      #{takeCareManPhone,jdbcType=VARCHAR}, #{repairManName,jdbcType=VARCHAR}, #{repairManPhone,jdbcType=VARCHAR}, 
+      #{servicePhone,jdbcType=VARCHAR}, #{devLastOutTime,jdbcType=TIMESTAMP}, #{stockPrice,jdbcType=INTEGER}, 
+      #{userGetOutRate,jdbcType=INTEGER}, #{devCanBuyMark,jdbcType=TINYINT}, #{showPhoneText,jdbcType=TINYINT}, 
+      #{devDebugStatus,jdbcType=TINYINT}, #{callDevIp,jdbcType=VARCHAR}, #{domainId,jdbcType=INTEGER}, 
+      #{netbarId,jdbcType=INTEGER}, #{businessType,jdbcType=INTEGER}, #{showOrHide,jdbcType=INTEGER}, 
+      #{lastConsumeTime,jdbcType=TIMESTAMP}, #{isTest,jdbcType=INTEGER}, #{storeArea,jdbcType=INTEGER}, 
+      #{storeDetail,jdbcType=VARCHAR}, #{isPay,jdbcType=INTEGER}, #{isPoint,jdbcType=INTEGER}, 
+      #{payMethod,jdbcType=INTEGER}, #{notifyUrl,jdbcType=VARCHAR}, #{appKey,jdbcType=VARCHAR}, 
+      #{workTime,jdbcType=VARCHAR}, #{isWeChatPay,jdbcType=INTEGER}, #{isNeCardPay,jdbcType=INTEGER}, 
+      #{rate,jdbcType=REAL}, #{isDayReportDepart,jdbcType=INTEGER}, #{maSingleMode,jdbcType=INTEGER}, 
+      #{ccSingleMode,jdbcType=INTEGER}, #{jcSingleMode,jdbcType=INTEGER}, #{feSingleMode,jdbcType=INTEGER}, 
+      #{isBrushID,jdbcType=INTEGER}, #{viceCashierNum,jdbcType=INTEGER}, #{agentId,jdbcType=VARCHAR}, 
+      #{newExpireDate,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{statusMessage,jdbcType=VARCHAR}, 
+      #{creditsForConsume,jdbcType=INTEGER}, #{ztSingleMode,jdbcType=INTEGER}, #{tcSingleMode,jdbcType=INTEGER}, 
+      #{cucSingleMode,jdbcType=INTEGER}, #{jqSingleMode,jdbcType=INTEGER}, #{jzSingleMode,jdbcType=INTEGER}, 
+      #{mdSingleMode,jdbcType=INTEGER}, #{isZhiFuBaoPay,jdbcType=INTEGER}, #{chainId,jdbcType=INTEGER}, 
+      #{weixinPayType,jdbcType=INTEGER}, #{isUseOrder,jdbcType=INTEGER}, #{subMchId,jdbcType=CHAR}, 
+      #{provinceCode,jdbcType=VARCHAR}, #{cityCode,jdbcType=VARCHAR}, #{countyCode,jdbcType=VARCHAR}, 
+      #{townCode,jdbcType=VARCHAR}, #{storeLocationId,jdbcType=VARCHAR}, #{storeNotice,jdbcType=VARCHAR}, 
+      #{isProvideInvoice,jdbcType=INTEGER}, #{signKey,jdbcType=VARCHAR}, #{printSlogan,jdbcType=VARCHAR}, 
+      #{industryTypeId,jdbcType=VARCHAR}, #{styleOfCooking,jdbcType=VARCHAR}, #{markPosition,jdbcType=VARCHAR}, 
+      #{onlinPayValidateState,jdbcType=INTEGER}, #{isHLS,jdbcType=INTEGER}, #{starNum,jdbcType=DOUBLE}, 
+      #{storeDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dodonew.model.SE_Store">
+    insert into SE_Store
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="storeId != null">
+        storeId,
+      </if>
+      <if test="storeName != null">
+        storeName,
+      </if>
+      <if test="storeOwnerld != null">
+        storeOwnerld,
+      </if>
+      <if test="parentStoreId != null">
+        parentStoreId,
+      </if>
+      <if test="storeType != null">
+        storeType,
+      </if>
+      <if test="areaId != null">
+        areaId,
+      </if>
+      <if test="storeAddr != null">
+        storeAddr,
+      </if>
+      <if test="storeLongitude != null">
+        storeLongitude,
+      </if>
+      <if test="storeLatitude != null">
+        storeLatitude,
+      </if>
+      <if test="storePerson != null">
+        storePerson,
+      </if>
+      <if test="storePhone != null">
+        storePhone,
+      </if>
+      <if test="storeLegalPerson != null">
+        storeLegalPerson,
+      </if>
+      <if test="storePreviou != null">
+        storePreviou,
+      </if>
+      <if test="storeLevel != null">
+        storeLevel,
+      </if>
+      <if test="isEnabled != null">
+        isEnabled,
+      </if>
+      <if test="smallPicPath != null">
+        smallPicPath,
+      </if>
+      <if test="bigPicPath != null">
+        bigPicPath,
+      </if>
+      <if test="isRecom != null">
+        isRecom,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="haveStorage != null">
+        haveStorage,
+      </if>
+      <if test="signNumber != null">
+        signNumber,
+      </if>
+      <if test="webAddress != null">
+        webAddress,
+      </if>
+      <if test="storeNote != null">
+        storeNote,
+      </if>
+      <if test="activityPicPath != null">
+        activityPicPath,
+      </if>
+      <if test="scrollTitle != null">
+        scrollTitle,
+      </if>
+      <if test="deposit != null">
+        deposit,
+      </if>
+      <if test="balanceRate != null">
+        balanceRate,
+      </if>
+      <if test="licensePicPath != null">
+        licensePicPath,
+      </if>
+      <if test="permitPicPath != null">
+        permitPicPath,
+      </if>
+      <if test="takeCareManName != null">
+        takeCareManName,
+      </if>
+      <if test="takeCareManPhone != null">
+        takeCareManPhone,
+      </if>
+      <if test="repairManName != null">
+        repairManName,
+      </if>
+      <if test="repairManPhone != null">
+        repairManPhone,
+      </if>
+      <if test="servicePhone != null">
+        servicePhone,
+      </if>
+      <if test="devLastOutTime != null">
+        devLastOutTime,
+      </if>
+      <if test="stockPrice != null">
+        stockPrice,
+      </if>
+      <if test="userGetOutRate != null">
+        userGetOutRate,
+      </if>
+      <if test="devCanBuyMark != null">
+        devCanBuyMark,
+      </if>
+      <if test="showPhoneText != null">
+        showPhoneText,
+      </if>
+      <if test="devDebugStatus != null">
+        devDebugStatus,
+      </if>
+      <if test="callDevIp != null">
+        callDevIp,
+      </if>
+      <if test="domainId != null">
+        domainId,
+      </if>
+      <if test="netbarId != null">
+        netbarId,
+      </if>
+      <if test="businessType != null">
+        businessType,
+      </if>
+      <if test="showOrHide != null">
+        showOrHide,
+      </if>
+      <if test="lastConsumeTime != null">
+        lastConsumeTime,
+      </if>
+      <if test="isTest != null">
+        isTest,
+      </if>
+      <if test="storeArea != null">
+        storeArea,
+      </if>
+      <if test="storeDetail != null">
+        storeDetail,
+      </if>
+      <if test="isPay != null">
+        isPay,
+      </if>
+      <if test="isPoint != null">
+        isPoint,
+      </if>
+      <if test="payMethod != null">
+        payMethod,
+      </if>
+      <if test="notifyUrl != null">
+        notifyUrl,
+      </if>
+      <if test="appKey != null">
+        appKey,
+      </if>
+      <if test="workTime != null">
+        workTime,
+      </if>
+      <if test="isWeChatPay != null">
+        isWeChatPay,
+      </if>
+      <if test="isNeCardPay != null">
+        isNeCardPay,
+      </if>
+      <if test="rate != null">
+        rate,
+      </if>
+      <if test="isDayReportDepart != null">
+        isDayReportDepart,
+      </if>
+      <if test="maSingleMode != null">
+        maSingleMode,
+      </if>
+      <if test="ccSingleMode != null">
+        ccSingleMode,
+      </if>
+      <if test="jcSingleMode != null">
+        jcSingleMode,
+      </if>
+      <if test="feSingleMode != null">
+        feSingleMode,
+      </if>
+      <if test="isBrushID != null">
+        isBrushID,
+      </if>
+      <if test="viceCashierNum != null">
+        viceCashierNum,
+      </if>
+      <if test="agentId != null">
+        agentId,
+      </if>
+      <if test="newExpireDate != null">
+        newExpireDate,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="statusMessage != null">
+        statusMessage,
+      </if>
+      <if test="creditsForConsume != null">
+        creditsForConsume,
+      </if>
+      <if test="ztSingleMode != null">
+        ztSingleMode,
+      </if>
+      <if test="tcSingleMode != null">
+        tcSingleMode,
+      </if>
+      <if test="cucSingleMode != null">
+        cucSingleMode,
+      </if>
+      <if test="jqSingleMode != null">
+        jqSingleMode,
+      </if>
+      <if test="jzSingleMode != null">
+        jzSingleMode,
+      </if>
+      <if test="mdSingleMode != null">
+        mdSingleMode,
+      </if>
+      <if test="isZhiFuBaoPay != null">
+        isZhiFuBaoPay,
+      </if>
+      <if test="chainId != null">
+        chainId,
+      </if>
+      <if test="weixinPayType != null">
+        weixinPayType,
+      </if>
+      <if test="isUseOrder != null">
+        isUseOrder,
+      </if>
+      <if test="subMchId != null">
+        subMchId,
+      </if>
+      <if test="provinceCode != null">
+        provinceCode,
+      </if>
+      <if test="cityCode != null">
+        cityCode,
+      </if>
+      <if test="countyCode != null">
+        countyCode,
+      </if>
+      <if test="townCode != null">
+        townCode,
+      </if>
+      <if test="storeLocationId != null">
+        storeLocationId,
+      </if>
+      <if test="storeNotice != null">
+        storeNotice,
+      </if>
+      <if test="isProvideInvoice != null">
+        isProvideInvoice,
+      </if>
+      <if test="signKey != null">
+        signKey,
+      </if>
+      <if test="printSlogan != null">
+        printSlogan,
+      </if>
+      <if test="industryTypeId != null">
+        industryTypeId,
+      </if>
+      <if test="styleOfCooking != null">
+        styleOfCooking,
+      </if>
+      <if test="markPosition != null">
+        markPosition,
+      </if>
+      <if test="onlinPayValidateState != null">
+        onlinPayValidateState,
+      </if>
+      <if test="isHLS != null">
+        isHLS,
+      </if>
+      <if test="starNum != null">
+        starNum,
+      </if>
+      <if test="storeDesc != null">
+        storeDesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="storeId != null">
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null">
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeOwnerld != null">
+        #{storeOwnerld,jdbcType=BIGINT},
+      </if>
+      <if test="parentStoreId != null">
+        #{parentStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="storeType != null">
+        #{storeType,jdbcType=TINYINT},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="storeAddr != null">
+        #{storeAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLongitude != null">
+        #{storeLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLatitude != null">
+        #{storeLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="storePerson != null">
+        #{storePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="storePhone != null">
+        #{storePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLegalPerson != null">
+        #{storeLegalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="storePreviou != null">
+        #{storePreviou,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLevel != null">
+        #{storeLevel,jdbcType=TINYINT},
+      </if>
+      <if test="isEnabled != null">
+        #{isEnabled,jdbcType=TINYINT},
+      </if>
+      <if test="smallPicPath != null">
+        #{smallPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="bigPicPath != null">
+        #{bigPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="isRecom != null">
+        #{isRecom,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="haveStorage != null">
+        #{haveStorage,jdbcType=TINYINT},
+      </if>
+      <if test="signNumber != null">
+        #{signNumber,jdbcType=INTEGER},
+      </if>
+      <if test="webAddress != null">
+        #{webAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNote != null">
+        #{storeNote,jdbcType=VARCHAR},
+      </if>
+      <if test="activityPicPath != null">
+        #{activityPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="scrollTitle != null">
+        #{scrollTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null">
+        #{deposit,jdbcType=INTEGER},
+      </if>
+      <if test="balanceRate != null">
+        #{balanceRate,jdbcType=INTEGER},
+      </if>
+      <if test="licensePicPath != null">
+        #{licensePicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="permitPicPath != null">
+        #{permitPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="takeCareManName != null">
+        #{takeCareManName,jdbcType=VARCHAR},
+      </if>
+      <if test="takeCareManPhone != null">
+        #{takeCareManPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="repairManName != null">
+        #{repairManName,jdbcType=VARCHAR},
+      </if>
+      <if test="repairManPhone != null">
+        #{repairManPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="servicePhone != null">
+        #{servicePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="devLastOutTime != null">
+        #{devLastOutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stockPrice != null">
+        #{stockPrice,jdbcType=INTEGER},
+      </if>
+      <if test="userGetOutRate != null">
+        #{userGetOutRate,jdbcType=INTEGER},
+      </if>
+      <if test="devCanBuyMark != null">
+        #{devCanBuyMark,jdbcType=TINYINT},
+      </if>
+      <if test="showPhoneText != null">
+        #{showPhoneText,jdbcType=TINYINT},
+      </if>
+      <if test="devDebugStatus != null">
+        #{devDebugStatus,jdbcType=TINYINT},
+      </if>
+      <if test="callDevIp != null">
+        #{callDevIp,jdbcType=VARCHAR},
+      </if>
+      <if test="domainId != null">
+        #{domainId,jdbcType=INTEGER},
+      </if>
+      <if test="netbarId != null">
+        #{netbarId,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="showOrHide != null">
+        #{showOrHide,jdbcType=INTEGER},
+      </if>
+      <if test="lastConsumeTime != null">
+        #{lastConsumeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isTest != null">
+        #{isTest,jdbcType=INTEGER},
+      </if>
+      <if test="storeArea != null">
+        #{storeArea,jdbcType=INTEGER},
+      </if>
+      <if test="storeDetail != null">
+        #{storeDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="isPay != null">
+        #{isPay,jdbcType=INTEGER},
+      </if>
+      <if test="isPoint != null">
+        #{isPoint,jdbcType=INTEGER},
+      </if>
+      <if test="payMethod != null">
+        #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="notifyUrl != null">
+        #{notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isWeChatPay != null">
+        #{isWeChatPay,jdbcType=INTEGER},
+      </if>
+      <if test="isNeCardPay != null">
+        #{isNeCardPay,jdbcType=INTEGER},
+      </if>
+      <if test="rate != null">
+        #{rate,jdbcType=REAL},
+      </if>
+      <if test="isDayReportDepart != null">
+        #{isDayReportDepart,jdbcType=INTEGER},
+      </if>
+      <if test="maSingleMode != null">
+        #{maSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="ccSingleMode != null">
+        #{ccSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="jcSingleMode != null">
+        #{jcSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="feSingleMode != null">
+        #{feSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="isBrushID != null">
+        #{isBrushID,jdbcType=INTEGER},
+      </if>
+      <if test="viceCashierNum != null">
+        #{viceCashierNum,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=VARCHAR},
+      </if>
+      <if test="newExpireDate != null">
+        #{newExpireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="statusMessage != null">
+        #{statusMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="creditsForConsume != null">
+        #{creditsForConsume,jdbcType=INTEGER},
+      </if>
+      <if test="ztSingleMode != null">
+        #{ztSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="tcSingleMode != null">
+        #{tcSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="cucSingleMode != null">
+        #{cucSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="jqSingleMode != null">
+        #{jqSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="jzSingleMode != null">
+        #{jzSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="mdSingleMode != null">
+        #{mdSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="isZhiFuBaoPay != null">
+        #{isZhiFuBaoPay,jdbcType=INTEGER},
+      </if>
+      <if test="chainId != null">
+        #{chainId,jdbcType=INTEGER},
+      </if>
+      <if test="weixinPayType != null">
+        #{weixinPayType,jdbcType=INTEGER},
+      </if>
+      <if test="isUseOrder != null">
+        #{isUseOrder,jdbcType=INTEGER},
+      </if>
+      <if test="subMchId != null">
+        #{subMchId,jdbcType=CHAR},
+      </if>
+      <if test="provinceCode != null">
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="countyCode != null">
+        #{countyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="townCode != null">
+        #{townCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLocationId != null">
+        #{storeLocationId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNotice != null">
+        #{storeNotice,jdbcType=VARCHAR},
+      </if>
+      <if test="isProvideInvoice != null">
+        #{isProvideInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="signKey != null">
+        #{signKey,jdbcType=VARCHAR},
+      </if>
+      <if test="printSlogan != null">
+        #{printSlogan,jdbcType=VARCHAR},
+      </if>
+      <if test="industryTypeId != null">
+        #{industryTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="styleOfCooking != null">
+        #{styleOfCooking,jdbcType=VARCHAR},
+      </if>
+      <if test="markPosition != null">
+        #{markPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinPayValidateState != null">
+        #{onlinPayValidateState,jdbcType=INTEGER},
+      </if>
+      <if test="isHLS != null">
+        #{isHLS,jdbcType=INTEGER},
+      </if>
+      <if test="starNum != null">
+        #{starNum,jdbcType=DOUBLE},
+      </if>
+      <if test="storeDesc != null">
+        #{storeDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dodonew.model.SE_Store">
+    update SE_Store
+    <set>
+      <if test="storeName != null">
+        storeName = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeOwnerld != null">
+        storeOwnerld = #{storeOwnerld,jdbcType=BIGINT},
+      </if>
+      <if test="parentStoreId != null">
+        parentStoreId = #{parentStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="storeType != null">
+        storeType = #{storeType,jdbcType=TINYINT},
+      </if>
+      <if test="areaId != null">
+        areaId = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="storeAddr != null">
+        storeAddr = #{storeAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLongitude != null">
+        storeLongitude = #{storeLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLatitude != null">
+        storeLatitude = #{storeLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="storePerson != null">
+        storePerson = #{storePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="storePhone != null">
+        storePhone = #{storePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLegalPerson != null">
+        storeLegalPerson = #{storeLegalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="storePreviou != null">
+        storePreviou = #{storePreviou,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLevel != null">
+        storeLevel = #{storeLevel,jdbcType=TINYINT},
+      </if>
+      <if test="isEnabled != null">
+        isEnabled = #{isEnabled,jdbcType=TINYINT},
+      </if>
+      <if test="smallPicPath != null">
+        smallPicPath = #{smallPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="bigPicPath != null">
+        bigPicPath = #{bigPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="isRecom != null">
+        isRecom = #{isRecom,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="haveStorage != null">
+        haveStorage = #{haveStorage,jdbcType=TINYINT},
+      </if>
+      <if test="signNumber != null">
+        signNumber = #{signNumber,jdbcType=INTEGER},
+      </if>
+      <if test="webAddress != null">
+        webAddress = #{webAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNote != null">
+        storeNote = #{storeNote,jdbcType=VARCHAR},
+      </if>
+      <if test="activityPicPath != null">
+        activityPicPath = #{activityPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="scrollTitle != null">
+        scrollTitle = #{scrollTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null">
+        deposit = #{deposit,jdbcType=INTEGER},
+      </if>
+      <if test="balanceRate != null">
+        balanceRate = #{balanceRate,jdbcType=INTEGER},
+      </if>
+      <if test="licensePicPath != null">
+        licensePicPath = #{licensePicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="permitPicPath != null">
+        permitPicPath = #{permitPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="takeCareManName != null">
+        takeCareManName = #{takeCareManName,jdbcType=VARCHAR},
+      </if>
+      <if test="takeCareManPhone != null">
+        takeCareManPhone = #{takeCareManPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="repairManName != null">
+        repairManName = #{repairManName,jdbcType=VARCHAR},
+      </if>
+      <if test="repairManPhone != null">
+        repairManPhone = #{repairManPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="servicePhone != null">
+        servicePhone = #{servicePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="devLastOutTime != null">
+        devLastOutTime = #{devLastOutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stockPrice != null">
+        stockPrice = #{stockPrice,jdbcType=INTEGER},
+      </if>
+      <if test="userGetOutRate != null">
+        userGetOutRate = #{userGetOutRate,jdbcType=INTEGER},
+      </if>
+      <if test="devCanBuyMark != null">
+        devCanBuyMark = #{devCanBuyMark,jdbcType=TINYINT},
+      </if>
+      <if test="showPhoneText != null">
+        showPhoneText = #{showPhoneText,jdbcType=TINYINT},
+      </if>
+      <if test="devDebugStatus != null">
+        devDebugStatus = #{devDebugStatus,jdbcType=TINYINT},
+      </if>
+      <if test="callDevIp != null">
+        callDevIp = #{callDevIp,jdbcType=VARCHAR},
+      </if>
+      <if test="domainId != null">
+        domainId = #{domainId,jdbcType=INTEGER},
+      </if>
+      <if test="netbarId != null">
+        netbarId = #{netbarId,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null">
+        businessType = #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="showOrHide != null">
+        showOrHide = #{showOrHide,jdbcType=INTEGER},
+      </if>
+      <if test="lastConsumeTime != null">
+        lastConsumeTime = #{lastConsumeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isTest != null">
+        isTest = #{isTest,jdbcType=INTEGER},
+      </if>
+      <if test="storeArea != null">
+        storeArea = #{storeArea,jdbcType=INTEGER},
+      </if>
+      <if test="storeDetail != null">
+        storeDetail = #{storeDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="isPay != null">
+        isPay = #{isPay,jdbcType=INTEGER},
+      </if>
+      <if test="isPoint != null">
+        isPoint = #{isPoint,jdbcType=INTEGER},
+      </if>
+      <if test="payMethod != null">
+        payMethod = #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="notifyUrl != null">
+        notifyUrl = #{notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        appKey = #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null">
+        workTime = #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isWeChatPay != null">
+        isWeChatPay = #{isWeChatPay,jdbcType=INTEGER},
+      </if>
+      <if test="isNeCardPay != null">
+        isNeCardPay = #{isNeCardPay,jdbcType=INTEGER},
+      </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=REAL},
+      </if>
+      <if test="isDayReportDepart != null">
+        isDayReportDepart = #{isDayReportDepart,jdbcType=INTEGER},
+      </if>
+      <if test="maSingleMode != null">
+        maSingleMode = #{maSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="ccSingleMode != null">
+        ccSingleMode = #{ccSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="jcSingleMode != null">
+        jcSingleMode = #{jcSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="feSingleMode != null">
+        feSingleMode = #{feSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="isBrushID != null">
+        isBrushID = #{isBrushID,jdbcType=INTEGER},
+      </if>
+      <if test="viceCashierNum != null">
+        viceCashierNum = #{viceCashierNum,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null">
+        agentId = #{agentId,jdbcType=VARCHAR},
+      </if>
+      <if test="newExpireDate != null">
+        newExpireDate = #{newExpireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="statusMessage != null">
+        statusMessage = #{statusMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="creditsForConsume != null">
+        creditsForConsume = #{creditsForConsume,jdbcType=INTEGER},
+      </if>
+      <if test="ztSingleMode != null">
+        ztSingleMode = #{ztSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="tcSingleMode != null">
+        tcSingleMode = #{tcSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="cucSingleMode != null">
+        cucSingleMode = #{cucSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="jqSingleMode != null">
+        jqSingleMode = #{jqSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="jzSingleMode != null">
+        jzSingleMode = #{jzSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="mdSingleMode != null">
+        mdSingleMode = #{mdSingleMode,jdbcType=INTEGER},
+      </if>
+      <if test="isZhiFuBaoPay != null">
+        isZhiFuBaoPay = #{isZhiFuBaoPay,jdbcType=INTEGER},
+      </if>
+      <if test="chainId != null">
+        chainId = #{chainId,jdbcType=INTEGER},
+      </if>
+      <if test="weixinPayType != null">
+        weixinPayType = #{weixinPayType,jdbcType=INTEGER},
+      </if>
+      <if test="isUseOrder != null">
+        isUseOrder = #{isUseOrder,jdbcType=INTEGER},
+      </if>
+      <if test="subMchId != null">
+        subMchId = #{subMchId,jdbcType=CHAR},
+      </if>
+      <if test="provinceCode != null">
+        provinceCode = #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        cityCode = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="countyCode != null">
+        countyCode = #{countyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="townCode != null">
+        townCode = #{townCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLocationId != null">
+        storeLocationId = #{storeLocationId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNotice != null">
+        storeNotice = #{storeNotice,jdbcType=VARCHAR},
+      </if>
+      <if test="isProvideInvoice != null">
+        isProvideInvoice = #{isProvideInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="signKey != null">
+        signKey = #{signKey,jdbcType=VARCHAR},
+      </if>
+      <if test="printSlogan != null">
+        printSlogan = #{printSlogan,jdbcType=VARCHAR},
+      </if>
+      <if test="industryTypeId != null">
+        industryTypeId = #{industryTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="styleOfCooking != null">
+        styleOfCooking = #{styleOfCooking,jdbcType=VARCHAR},
+      </if>
+      <if test="markPosition != null">
+        markPosition = #{markPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinPayValidateState != null">
+        onlinPayValidateState = #{onlinPayValidateState,jdbcType=INTEGER},
+      </if>
+      <if test="isHLS != null">
+        isHLS = #{isHLS,jdbcType=INTEGER},
+      </if>
+      <if test="starNum != null">
+        starNum = #{starNum,jdbcType=DOUBLE},
+      </if>
+      <if test="storeDesc != null">
+        storeDesc = #{storeDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where storeId = #{storeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dodonew.model.SE_Store">
+    update SE_Store
+    set storeName = #{storeName,jdbcType=VARCHAR},
+      storeOwnerld = #{storeOwnerld,jdbcType=BIGINT},
+      parentStoreId = #{parentStoreId,jdbcType=INTEGER},
+      storeType = #{storeType,jdbcType=TINYINT},
+      areaId = #{areaId,jdbcType=INTEGER},
+      storeAddr = #{storeAddr,jdbcType=VARCHAR},
+      storeLongitude = #{storeLongitude,jdbcType=VARCHAR},
+      storeLatitude = #{storeLatitude,jdbcType=VARCHAR},
+      storePerson = #{storePerson,jdbcType=VARCHAR},
+      storePhone = #{storePhone,jdbcType=VARCHAR},
+      storeLegalPerson = #{storeLegalPerson,jdbcType=VARCHAR},
+      storePreviou = #{storePreviou,jdbcType=VARCHAR},
+      storeLevel = #{storeLevel,jdbcType=TINYINT},
+      isEnabled = #{isEnabled,jdbcType=TINYINT},
+      smallPicPath = #{smallPicPath,jdbcType=VARCHAR},
+      bigPicPath = #{bigPicPath,jdbcType=VARCHAR},
+      isRecom = #{isRecom,jdbcType=TINYINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      haveStorage = #{haveStorage,jdbcType=TINYINT},
+      signNumber = #{signNumber,jdbcType=INTEGER},
+      webAddress = #{webAddress,jdbcType=VARCHAR},
+      storeNote = #{storeNote,jdbcType=VARCHAR},
+      activityPicPath = #{activityPicPath,jdbcType=VARCHAR},
+      scrollTitle = #{scrollTitle,jdbcType=VARCHAR},
+      deposit = #{deposit,jdbcType=INTEGER},
+      balanceRate = #{balanceRate,jdbcType=INTEGER},
+      licensePicPath = #{licensePicPath,jdbcType=VARCHAR},
+      permitPicPath = #{permitPicPath,jdbcType=VARCHAR},
+      takeCareManName = #{takeCareManName,jdbcType=VARCHAR},
+      takeCareManPhone = #{takeCareManPhone,jdbcType=VARCHAR},
+      repairManName = #{repairManName,jdbcType=VARCHAR},
+      repairManPhone = #{repairManPhone,jdbcType=VARCHAR},
+      servicePhone = #{servicePhone,jdbcType=VARCHAR},
+      devLastOutTime = #{devLastOutTime,jdbcType=TIMESTAMP},
+      stockPrice = #{stockPrice,jdbcType=INTEGER},
+      userGetOutRate = #{userGetOutRate,jdbcType=INTEGER},
+      devCanBuyMark = #{devCanBuyMark,jdbcType=TINYINT},
+      showPhoneText = #{showPhoneText,jdbcType=TINYINT},
+      devDebugStatus = #{devDebugStatus,jdbcType=TINYINT},
+      callDevIp = #{callDevIp,jdbcType=VARCHAR},
+      domainId = #{domainId,jdbcType=INTEGER},
+      netbarId = #{netbarId,jdbcType=INTEGER},
+      businessType = #{businessType,jdbcType=INTEGER},
+      showOrHide = #{showOrHide,jdbcType=INTEGER},
+      lastConsumeTime = #{lastConsumeTime,jdbcType=TIMESTAMP},
+      isTest = #{isTest,jdbcType=INTEGER},
+      storeArea = #{storeArea,jdbcType=INTEGER},
+      storeDetail = #{storeDetail,jdbcType=VARCHAR},
+      isPay = #{isPay,jdbcType=INTEGER},
+      isPoint = #{isPoint,jdbcType=INTEGER},
+      payMethod = #{payMethod,jdbcType=INTEGER},
+      notifyUrl = #{notifyUrl,jdbcType=VARCHAR},
+      appKey = #{appKey,jdbcType=VARCHAR},
+      workTime = #{workTime,jdbcType=VARCHAR},
+      isWeChatPay = #{isWeChatPay,jdbcType=INTEGER},
+      isNeCardPay = #{isNeCardPay,jdbcType=INTEGER},
+      rate = #{rate,jdbcType=REAL},
+      isDayReportDepart = #{isDayReportDepart,jdbcType=INTEGER},
+      maSingleMode = #{maSingleMode,jdbcType=INTEGER},
+      ccSingleMode = #{ccSingleMode,jdbcType=INTEGER},
+      jcSingleMode = #{jcSingleMode,jdbcType=INTEGER},
+      feSingleMode = #{feSingleMode,jdbcType=INTEGER},
+      isBrushID = #{isBrushID,jdbcType=INTEGER},
+      viceCashierNum = #{viceCashierNum,jdbcType=INTEGER},
+      agentId = #{agentId,jdbcType=VARCHAR},
+      newExpireDate = #{newExpireDate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      statusMessage = #{statusMessage,jdbcType=VARCHAR},
+      creditsForConsume = #{creditsForConsume,jdbcType=INTEGER},
+      ztSingleMode = #{ztSingleMode,jdbcType=INTEGER},
+      tcSingleMode = #{tcSingleMode,jdbcType=INTEGER},
+      cucSingleMode = #{cucSingleMode,jdbcType=INTEGER},
+      jqSingleMode = #{jqSingleMode,jdbcType=INTEGER},
+      jzSingleMode = #{jzSingleMode,jdbcType=INTEGER},
+      mdSingleMode = #{mdSingleMode,jdbcType=INTEGER},
+      isZhiFuBaoPay = #{isZhiFuBaoPay,jdbcType=INTEGER},
+      chainId = #{chainId,jdbcType=INTEGER},
+      weixinPayType = #{weixinPayType,jdbcType=INTEGER},
+      isUseOrder = #{isUseOrder,jdbcType=INTEGER},
+      subMchId = #{subMchId,jdbcType=CHAR},
+      provinceCode = #{provinceCode,jdbcType=VARCHAR},
+      cityCode = #{cityCode,jdbcType=VARCHAR},
+      countyCode = #{countyCode,jdbcType=VARCHAR},
+      townCode = #{townCode,jdbcType=VARCHAR},
+      storeLocationId = #{storeLocationId,jdbcType=VARCHAR},
+      storeNotice = #{storeNotice,jdbcType=VARCHAR},
+      isProvideInvoice = #{isProvideInvoice,jdbcType=INTEGER},
+      signKey = #{signKey,jdbcType=VARCHAR},
+      printSlogan = #{printSlogan,jdbcType=VARCHAR},
+      industryTypeId = #{industryTypeId,jdbcType=VARCHAR},
+      styleOfCooking = #{styleOfCooking,jdbcType=VARCHAR},
+      markPosition = #{markPosition,jdbcType=VARCHAR},
+      onlinPayValidateState = #{onlinPayValidateState,jdbcType=INTEGER},
+      isHLS = #{isHLS,jdbcType=INTEGER},
+      starNum = #{starNum,jdbcType=DOUBLE},
+      storeDesc = #{storeDesc,jdbcType=LONGVARCHAR}
+    where storeId = #{storeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dodonew.model.SE_Store">
+    update SE_Store
+    set storeName = #{storeName,jdbcType=VARCHAR},
+      storeOwnerld = #{storeOwnerld,jdbcType=BIGINT},
+      parentStoreId = #{parentStoreId,jdbcType=INTEGER},
+      storeType = #{storeType,jdbcType=TINYINT},
+      areaId = #{areaId,jdbcType=INTEGER},
+      storeAddr = #{storeAddr,jdbcType=VARCHAR},
+      storeLongitude = #{storeLongitude,jdbcType=VARCHAR},
+      storeLatitude = #{storeLatitude,jdbcType=VARCHAR},
+      storePerson = #{storePerson,jdbcType=VARCHAR},
+      storePhone = #{storePhone,jdbcType=VARCHAR},
+      storeLegalPerson = #{storeLegalPerson,jdbcType=VARCHAR},
+      storePreviou = #{storePreviou,jdbcType=VARCHAR},
+      storeLevel = #{storeLevel,jdbcType=TINYINT},
+      isEnabled = #{isEnabled,jdbcType=TINYINT},
+      smallPicPath = #{smallPicPath,jdbcType=VARCHAR},
+      bigPicPath = #{bigPicPath,jdbcType=VARCHAR},
+      isRecom = #{isRecom,jdbcType=TINYINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      haveStorage = #{haveStorage,jdbcType=TINYINT},
+      signNumber = #{signNumber,jdbcType=INTEGER},
+      webAddress = #{webAddress,jdbcType=VARCHAR},
+      storeNote = #{storeNote,jdbcType=VARCHAR},
+      activityPicPath = #{activityPicPath,jdbcType=VARCHAR},
+      scrollTitle = #{scrollTitle,jdbcType=VARCHAR},
+      deposit = #{deposit,jdbcType=INTEGER},
+      balanceRate = #{balanceRate,jdbcType=INTEGER},
+      licensePicPath = #{licensePicPath,jdbcType=VARCHAR},
+      permitPicPath = #{permitPicPath,jdbcType=VARCHAR},
+      takeCareManName = #{takeCareManName,jdbcType=VARCHAR},
+      takeCareManPhone = #{takeCareManPhone,jdbcType=VARCHAR},
+      repairManName = #{repairManName,jdbcType=VARCHAR},
+      repairManPhone = #{repairManPhone,jdbcType=VARCHAR},
+      servicePhone = #{servicePhone,jdbcType=VARCHAR},
+      devLastOutTime = #{devLastOutTime,jdbcType=TIMESTAMP},
+      stockPrice = #{stockPrice,jdbcType=INTEGER},
+      userGetOutRate = #{userGetOutRate,jdbcType=INTEGER},
+      devCanBuyMark = #{devCanBuyMark,jdbcType=TINYINT},
+      showPhoneText = #{showPhoneText,jdbcType=TINYINT},
+      devDebugStatus = #{devDebugStatus,jdbcType=TINYINT},
+      callDevIp = #{callDevIp,jdbcType=VARCHAR},
+      domainId = #{domainId,jdbcType=INTEGER},
+      netbarId = #{netbarId,jdbcType=INTEGER},
+      businessType = #{businessType,jdbcType=INTEGER},
+      showOrHide = #{showOrHide,jdbcType=INTEGER},
+      lastConsumeTime = #{lastConsumeTime,jdbcType=TIMESTAMP},
+      isTest = #{isTest,jdbcType=INTEGER},
+      storeArea = #{storeArea,jdbcType=INTEGER},
+      storeDetail = #{storeDetail,jdbcType=VARCHAR},
+      isPay = #{isPay,jdbcType=INTEGER},
+      isPoint = #{isPoint,jdbcType=INTEGER},
+      payMethod = #{payMethod,jdbcType=INTEGER},
+      notifyUrl = #{notifyUrl,jdbcType=VARCHAR},
+      appKey = #{appKey,jdbcType=VARCHAR},
+      workTime = #{workTime,jdbcType=VARCHAR},
+      isWeChatPay = #{isWeChatPay,jdbcType=INTEGER},
+      isNeCardPay = #{isNeCardPay,jdbcType=INTEGER},
+      rate = #{rate,jdbcType=REAL},
+      isDayReportDepart = #{isDayReportDepart,jdbcType=INTEGER},
+      maSingleMode = #{maSingleMode,jdbcType=INTEGER},
+      ccSingleMode = #{ccSingleMode,jdbcType=INTEGER},
+      jcSingleMode = #{jcSingleMode,jdbcType=INTEGER},
+      feSingleMode = #{feSingleMode,jdbcType=INTEGER},
+      isBrushID = #{isBrushID,jdbcType=INTEGER},
+      viceCashierNum = #{viceCashierNum,jdbcType=INTEGER},
+      agentId = #{agentId,jdbcType=VARCHAR},
+      newExpireDate = #{newExpireDate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      statusMessage = #{statusMessage,jdbcType=VARCHAR},
+      creditsForConsume = #{creditsForConsume,jdbcType=INTEGER},
+      ztSingleMode = #{ztSingleMode,jdbcType=INTEGER},
+      tcSingleMode = #{tcSingleMode,jdbcType=INTEGER},
+      cucSingleMode = #{cucSingleMode,jdbcType=INTEGER},
+      jqSingleMode = #{jqSingleMode,jdbcType=INTEGER},
+      jzSingleMode = #{jzSingleMode,jdbcType=INTEGER},
+      mdSingleMode = #{mdSingleMode,jdbcType=INTEGER},
+      isZhiFuBaoPay = #{isZhiFuBaoPay,jdbcType=INTEGER},
+      chainId = #{chainId,jdbcType=INTEGER},
+      weixinPayType = #{weixinPayType,jdbcType=INTEGER},
+      isUseOrder = #{isUseOrder,jdbcType=INTEGER},
+      subMchId = #{subMchId,jdbcType=CHAR},
+      provinceCode = #{provinceCode,jdbcType=VARCHAR},
+      cityCode = #{cityCode,jdbcType=VARCHAR},
+      countyCode = #{countyCode,jdbcType=VARCHAR},
+      townCode = #{townCode,jdbcType=VARCHAR},
+      storeLocationId = #{storeLocationId,jdbcType=VARCHAR},
+      storeNotice = #{storeNotice,jdbcType=VARCHAR},
+      isProvideInvoice = #{isProvideInvoice,jdbcType=INTEGER},
+      signKey = #{signKey,jdbcType=VARCHAR},
+      printSlogan = #{printSlogan,jdbcType=VARCHAR},
+      industryTypeId = #{industryTypeId,jdbcType=VARCHAR},
+      styleOfCooking = #{styleOfCooking,jdbcType=VARCHAR},
+      markPosition = #{markPosition,jdbcType=VARCHAR},
+      onlinPayValidateState = #{onlinPayValidateState,jdbcType=INTEGER},
+      isHLS = #{isHLS,jdbcType=INTEGER},
+      starNum = #{starNum,jdbcType=DOUBLE}
+    where storeId = #{storeId,jdbcType=VARCHAR}
+  </update>
+</mapper>

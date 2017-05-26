@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.WxMemberMapper">
+    <resultMap id="BaseResultMap" type="com.dodonew.model.WxMember">
+        <id column="memberId" jdbcType="INTEGER" property="memberid"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="openId" jdbcType="VARCHAR" property="openid"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="gender" jdbcType="INTEGER" property="gender"/>
+        <result column="registTime" jdbcType="VARCHAR" property="registtime"/>
+        <result column="storeId" jdbcType="INTEGER" property="storeid"/>
+        <result column="cardId" jdbcType="VARCHAR" property="cardid"/>
+        <result column="memberName" jdbcType="VARCHAR" property="membername"/>
+        <result column="balance" jdbcType="REAL" property="balance"/>
+        <result column="myCredits" jdbcType="INTEGER" property="mycredits"/>
+        <result column="accountNumber" jdbcType="VARCHAR" property="accountnumber"/>
+        <result column="lastBalance" jdbcType="REAL" property="lastbalance"/>
+        <result column="cardLevelID" jdbcType="VARCHAR" property="cardlevelid"/>
+        <result column="cardStatus" jdbcType="INTEGER" property="cardstatus"/>
+        <result column="cancelTime" jdbcType="VARCHAR" property="canceltime"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="myGrowthValue" jdbcType="INTEGER" property="mygrowthvalue"/>
+        <result column="memberBirthday" jdbcType="CHAR" property="memberbirthday"/>
+        <result column="tempMobile" jdbcType="CHAR" property="tempmobile"/>
+        <result column="isFirstAttention" jdbcType="TINYINT" property="isfirstattention"/>
+        <result column="idCard" jdbcType="VARCHAR" property="idcard"/>
+        <result column="birthday" jdbcType="VARCHAR" property="birthday"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="unionId" jdbcType="VARCHAR" property="unionId"/>
+        <result column="extendId" jdbcType="CHAR" property="extendid"/>
+        <result column="batchId" jdbcType="INTEGER" property="batchid"/>
+        <result column="giveMoney" jdbcType="DOUBLE" property="givemoney"/>
+        <result column="isPwd" jdbcType="TINYINT" property="ispwd"/>
+        <result column="memberCardId" jdbcType="INTEGER" property="memberCardId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    memberId, nickname, openId, mobile, gender, registTime, storeId, cardId, memberName, 
+    balance, myCredits, accountNumber, lastBalance, cardLevelID, cardStatus, cancelTime, 
+    operator, myGrowthValue, memberBirthday, tempMobile, isFirstAttention, idCard, birthday, 
+    password, extendId, batchId, giveMoney, isPwd,unionId,memberCardId
+  </sql>
+
+    <select id="queryByOpenId" resultMap="BaseResultMap" parameterType="com.dodonew.model.WxMemberKey">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM WX_Member
+        WHERE storeId=#{storeId}
+        <trim suffixOverrides=",">
+            <if test="openId != null">
+                and openId=#{openId}
+            </if>
+            <if test="unionId != null">
+                and unionId=#{unionId}
+            </if>
+            <if test="mobile != null">
+                AND mobile=#{mobile}
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <select id="getMemberDiscount" resultType="java.lang.String" parameterType="com.dodonew.model.WxMemberKey">
+        select l.discount from WX_MemberLevel l,WX_Member m
+        where l.storeId=m.storeId and m.cardLevelID=l.levelID AND m.cardStatus=0
+        <trim suffixOverrides=",">
+            <if test="openId != null">
+                and m.openId=#{openId}
+            </if>
+            <if test="unionId != null">
+                and m.unionId=#{unionId}
+            </if>
+            <if test="storeId != null">
+                AND m.storeId=#{storeId}
+            </if>
+            <if test="memberId > 0">
+                and m.memberId=#{memberId}
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <select id="selectByMobile" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM WX_Member
+        WHERE
+    </select>
+
+    <select id="selectCardId" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT max(memberCardId+1)
+        FROM WX_Member
+        WHERE storeId=#{storeId}
+    </select>
+
+
+    <select id="query" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM WX_Member
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from WX_Member
+        where memberId = #{memberid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from WX_Member
+    where memberId = #{memberid,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.dodonew.model.WxMember">
+    insert into WX_Member (memberId, nickname, openId, 
+      mobile, gender, registTime, 
+      storeId, cardId, memberName, 
+      balance, myCredits, accountNumber, 
+      lastBalance, cardLevelID, cardStatus, 
+      cancelTime, operator, myGrowthValue, 
+      memberBirthday, tempMobile, isFirstAttention, 
+      idCard, birthday, password, 
+      extendId, batchId, giveMoney, 
+      isPwd,memberCardId)
+    values (#{memberid,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{registtime,jdbcType=TIMESTAMP}, 
+      #{storeid,jdbcType=INTEGER}, #{cardid,jdbcType=VARCHAR}, #{membername,jdbcType=VARCHAR}, 
+      #{balance,jdbcType=REAL}, #{mycredits,jdbcType=INTEGER}, #{accountnumber,jdbcType=VARCHAR}, 
+      #{lastbalance,jdbcType=REAL}, #{cardlevelid,jdbcType=VARCHAR}, #{cardstatus,jdbcType=INTEGER}, 
+      #{canceltime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}, #{mygrowthvalue,jdbcType=INTEGER}, 
+      #{memberbirthday,jdbcType=CHAR}, #{tempmobile,jdbcType=CHAR}, #{isfirstattention,jdbcType=TINYINT}, 
+      #{idcard,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{password,jdbcType=VARCHAR}, 
+      #{extendid,jdbcType=CHAR}, #{batchid,jdbcType=INTEGER}, #{givemoney,jdbcType=DOUBLE}, 
+      #{ispwd,jdbcType=TINYINT},#{memberCardId, jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.dodonew.model.WxMember" useGeneratedKeys="true"
+            keyProperty="memberid">
+        insert into WX_Member
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="memberid != null">
+                memberId,
+            </if>
+            <if test="nickname != null">
+                nickname,
+            </if>
+            <if test="openid != null">
+                openId,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="registtime != null">
+                registTime,
+            </if>
+            <if test="storeid != null">
+                storeId,
+            </if>
+            <if test="cardid != null">
+                cardId,
+            </if>
+            <if test="membername != null">
+                memberName,
+            </if>
+            <if test="balance != null">
+                balance,
+            </if>
+            <if test="mycredits != null">
+                myCredits,
+            </if>
+            <if test="accountnumber != null">
+                accountNumber,
+            </if>
+            <if test="lastbalance != null">
+                lastBalance,
+            </if>
+            <if test="cardlevelid != null">
+                cardLevelID,
+            </if>
+            <if test="cardstatus != null">
+                cardStatus,
+            </if>
+            <if test="canceltime != null">
+                cancelTime,
+            </if>
+            <if test="operator != null">
+                operator,
+            </if>
+            <if test="mygrowthvalue != null">
+                myGrowthValue,
+            </if>
+            <if test="memberbirthday != null">
+                memberBirthday,
+            </if>
+            <if test="tempmobile != null">
+                tempMobile,
+            </if>
+            <if test="isfirstattention != null">
+                isFirstAttention,
+            </if>
+            <if test="idcard != null">
+                idCard,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="extendid != null">
+                extendId,
+            </if>
+            <if test="batchid != null">
+                batchId,
+            </if>
+            <if test="givemoney != null">
+                giveMoney,
+            </if>
+            <if test="ispwd != null">
+                isPwd,
+            </if>
+            <if test="unionId != null">
+                unionId,
+            </if>
+            <if test="memberCardId != null">
+                memberCardId,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="memberid != null">
+                #{memberid,jdbcType=INTEGER},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="openid != null">
+                #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="registtime != null">
+                #{registtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="storeid != null">
+                #{storeid,jdbcType=INTEGER},
+            </if>
+            <if test="cardid != null">
+                #{cardid,jdbcType=VARCHAR},
+            </if>
+            <if test="membername != null">
+                #{membername,jdbcType=VARCHAR},
+            </if>
+            <if test="balance != null">
+                #{balance,jdbcType=REAL},
+            </if>
+            <if test="mycredits != null">
+                #{mycredits,jdbcType=INTEGER},
+            </if>
+            <if test="accountnumber != null">
+                #{accountnumber,jdbcType=VARCHAR},
+            </if>
+            <if test="lastbalance != null">
+                #{lastbalance,jdbcType=REAL},
+            </if>
+            <if test="cardlevelid != null">
+                #{cardlevelid,jdbcType=VARCHAR},
+            </if>
+            <if test="cardstatus != null">
+                #{cardstatus,jdbcType=INTEGER},
+            </if>
+            <if test="canceltime != null">
+                #{canceltime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="operator != null">
+                #{operator,jdbcType=VARCHAR},
+            </if>
+            <if test="mygrowthvalue != null">
+                #{mygrowthvalue,jdbcType=INTEGER},
+            </if>
+            <if test="memberbirthday != null">
+                #{memberbirthday,jdbcType=CHAR},
+            </if>
+            <if test="tempmobile != null">
+                #{tempmobile,jdbcType=CHAR},
+            </if>
+            <if test="isfirstattention != null">
+                #{isfirstattention,jdbcType=TINYINT},
+            </if>
+            <if test="idcard != null">
+                #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="extendid != null">
+                #{extendid,jdbcType=CHAR},
+            </if>
+            <if test="batchid != null">
+                #{batchid,jdbcType=INTEGER},
+            </if>
+            <if test="givemoney != null">
+                #{givemoney,jdbcType=DOUBLE},
+            </if>
+            <if test="ispwd != null">
+                #{ispwd,jdbcType=TINYINT},
+            </if>
+            <if test="unionId != null">
+                #{unionId, jdbcType=VARCHAR},
+            </if>
+            <if test="memberCardId != null">
+                #{memberCardId, jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateBalanceByKey" parameterType="com.dodonew.entityVo.CardPayVo">
+        UPDATE WX_Member SET balance=balance-#{payAmount} WHERE memberId=#{memberId}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dodonew.model.WxMember">
+        update WX_Member
+        <set>
+            <if test="nickname != null">
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="openid != null">
+                openId = #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="registtime != null">
+                registTime = #{registtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="storeid != null">
+                storeId = #{storeid,jdbcType=INTEGER},
+            </if>
+            <if test="cardid != null">
+                cardId = #{cardid,jdbcType=VARCHAR},
+            </if>
+            <if test="membername != null">
+                memberName = #{membername,jdbcType=VARCHAR},
+            </if>
+            <if test="balance != null">
+                balance = #{balance,jdbcType=REAL},
+            </if>
+            <if test="mycredits != null">
+                myCredits = #{mycredits,jdbcType=INTEGER},
+            </if>
+            <if test="accountnumber != null">
+                accountNumber = #{accountnumber,jdbcType=VARCHAR},
+            </if>
+            <if test="lastbalance != null">
+                lastBalance = #{lastbalance,jdbcType=REAL},
+            </if>
+            <if test="cardlevelid != null">
+                cardLevelID = #{cardlevelid,jdbcType=VARCHAR},
+            </if>
+            <if test="cardstatus != null">
+                cardStatus = #{cardstatus,jdbcType=INTEGER},
+            </if>
+            <if test="canceltime != null">
+                cancelTime = #{canceltime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="operator != null">
+                operator = #{operator,jdbcType=VARCHAR},
+            </if>
+            <if test="mygrowthvalue != null">
+                myGrowthValue = #{mygrowthvalue,jdbcType=INTEGER},
+            </if>
+            <if test="memberbirthday != null">
+                memberBirthday = #{memberbirthday,jdbcType=CHAR},
+            </if>
+            <if test="tempmobile != null">
+                tempMobile = #{tempmobile,jdbcType=CHAR},
+            </if>
+            <if test="isfirstattention != null">
+                isFirstAttention = #{isfirstattention,jdbcType=TINYINT},
+            </if>
+            <if test="idcard != null">
+                idCard = #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="extendid != null">
+                extendId = #{extendid,jdbcType=CHAR},
+            </if>
+            <if test="batchid != null">
+                batchId = #{batchid,jdbcType=INTEGER},
+            </if>
+            <if test="givemoney != null">
+                giveMoney = #{givemoney,jdbcType=DOUBLE},
+            </if>
+            <if test="ispwd != null">
+                isPwd = #{ispwd,jdbcType=TINYINT},
+            </if>
+            <if test="unionId != null">
+                unionId = #{unionId, jdbcType=VARCHAR},
+            </if>
+            <if test="memberCardId != null">
+                memberCardId = #{memberCardId, jdbcType=INTEGER}
+            </if>
+        </set>
+        where memberId = #{memberid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dodonew.model.WxMember">
+    update WX_Member
+    set nickname = #{nickname,jdbcType=VARCHAR},
+      openId = #{openid,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      registTime = #{registtime,jdbcType=TIMESTAMP},
+      storeId = #{storeid,jdbcType=INTEGER},
+      cardId = #{cardid,jdbcType=VARCHAR},
+      memberName = #{membername,jdbcType=VARCHAR},
+      balance = #{balance,jdbcType=REAL},
+      myCredits = #{mycredits,jdbcType=INTEGER},
+      accountNumber = #{accountnumber,jdbcType=VARCHAR},
+      lastBalance = #{lastbalance,jdbcType=REAL},
+      cardLevelID = #{cardlevelid,jdbcType=VARCHAR},
+      cardStatus = #{cardstatus,jdbcType=INTEGER},
+      cancelTime = #{canceltime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      myGrowthValue = #{mygrowthvalue,jdbcType=INTEGER},
+      memberBirthday = #{memberbirthday,jdbcType=CHAR},
+      tempMobile = #{tempmobile,jdbcType=CHAR},
+      isFirstAttention = #{isfirstattention,jdbcType=TINYINT},
+      idCard = #{idcard,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      password = #{password,jdbcType=VARCHAR},
+      extendId = #{extendid,jdbcType=CHAR},
+      batchId = #{batchid,jdbcType=INTEGER},
+      giveMoney = #{givemoney,jdbcType=DOUBLE},
+      isPwd = #{ispwd,jdbcType=TINYINT}
+    where memberId = #{memberid,jdbcType=INTEGER}
+  </update>
+</mapper>

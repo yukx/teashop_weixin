@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dodonew.dao.BiBillItemMapper">
+  <resultMap id="BaseResultMap" type="com.dodonew.model.BiBillItem">
+    <id column="T_storeId" property="storeid" />
+    <id column="T_BillItemID" jdbcType="CHAR" property="billitemid" />
+    <result column="T_BillID" jdbcType="CHAR" property="billid" />
+    <result column="T_MenuID" jdbcType="CHAR" property="menuid" />
+    <result column="T_MenuName" jdbcType="CHAR" property="menuname" />
+    <result column="T_MenuUnitID" jdbcType="CHAR" property="menuunitid" />
+    <result column="T_MenuUnitName" jdbcType="CHAR" property="menuunitname" />
+    <result column="T_MenuTypeID" jdbcType="CHAR" property="menutypeid" />
+    <result column="T_MenuTypeName" jdbcType="CHAR" property="menutypename" />
+    <result column="T_DepartID" jdbcType="CHAR" property="departid" />
+    <result column="T_DepartName" jdbcType="CHAR" property="departname" />
+    <result column="T_DepartTypeID" jdbcType="CHAR" property="departtypeid" />
+    <result column="T_DepartTypeName" jdbcType="CHAR" property="departtypename" />
+    <result column="T_AmountOrder" jdbcType="REAL" property="amountorder" />
+    <result column="T_AmountOnTable" jdbcType="REAL" property="amountontable" />
+    <result column="T_AmountCancel" jdbcType="REAL" property="amountcancel" />
+    <result column="T_MenuPrice" jdbcType="REAL" property="menuprice" />
+    <result column="T_MenuPrice2" jdbcType="REAL" property="menuprice2" />
+    <result column="T_SumOfConsume" jdbcType="REAL" property="sumofconsume" />
+    <result column="T_SumForDiscount" jdbcType="REAL" property="sumfordiscount" />
+    <result column="T_SumOfService" jdbcType="REAL" property="sumofservice" />
+    <result column="T_SumOfCookWay" jdbcType="REAL" property="sumofcookway" />
+    <result column="T_CookWayID" jdbcType="CHAR" property="cookwayid" />
+    <result column="T_CookWay" jdbcType="CHAR" property="cookway" />
+    <result column="T_CookWayPrice" jdbcType="REAL" property="cookwayprice" />
+    <result column="T_MenuPart" jdbcType="CHAR" property="menupart" />
+    <result column="T_Request" jdbcType="CHAR" property="request" />
+    <result column="T_TasteType" jdbcType="CHAR" property="tastetype" />
+    <result column="T_CreatePersonID" jdbcType="CHAR" property="createpersonid" />
+    <result column="T_CreatePerson" jdbcType="CHAR" property="createperson" />
+    <result column="T_CreateTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="T_ServingState" jdbcType="INTEGER" property="servingstate" />
+    <result column="T_IsSentMenu" jdbcType="BIT" property="issentmenu" />
+    <result column="T_IsSent" jdbcType="BIT" property="issent" />
+    <result column="T_Remark" jdbcType="CHAR" property="remark" />
+    <result column="T_IsSpecialPrice" jdbcType="BIT" property="isspecialprice" />
+    <result column="T_IsDiscount" jdbcType="BIT" property="isdiscount" />
+    <result column="T_DiscountRate" jdbcType="REAL" property="discountrate" />
+    <result column="T_IsPrinted" jdbcType="BIT" property="isprinted" />
+    <result column="T_PrintTime" jdbcType="VARCHAR" property="printtime" />
+    <result column="T_IsOnTable" jdbcType="BIT" property="isontable" />
+    <result column="T_OnTableTime" jdbcType="VARCHAR" property="ontabletime" />
+    <result column="T_MenuSetID" jdbcType="CHAR" property="menusetid" />
+    <result column="T_MenuSetName" jdbcType="CHAR" property="menusetname" />
+    <result column="T_MenuSetPrefix" jdbcType="CHAR" property="menusetprefix" />
+    <result column="T_MenuSetItemID" jdbcType="CHAR" property="menusetitemid" />
+    <result column="T_CostPrice" jdbcType="REAL" property="costprice" />
+    <result column="T_TaxRate" jdbcType="REAL" property="taxrate" />
+    <result column="T_SumOfTax" jdbcType="REAL" property="sumoftax" />
+    <result column="T_IsService" jdbcType="INTEGER" property="isservice" />
+    <result column="T_IsTimeMenu" jdbcType="TINYINT" property="istimemenu" />
+    <result column="T_MeasureMin" jdbcType="REAL" property="measuremin" />
+    <result column="T_StartMin" jdbcType="REAL" property="startmin" />
+    <result column="T_hasPrintedTotal" jdbcType="INTEGER" property="hasprintedtotal" />
+    <result column="T_MenuCost" jdbcType="DOUBLE" property="menucost" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    T.storeId as T_storeId, T.BillItemID as T_BillItemID, T.BillID as T_BillID, T.MenuID as T_MenuID, 
+    T.MenuName as T_MenuName, T.MenuUnitID as T_MenuUnitID, T.MenuUnitName as T_MenuUnitName, 
+    T.MenuTypeID as T_MenuTypeID, T.MenuTypeName as T_MenuTypeName, T.DepartID as T_DepartID, 
+    T.DepartName as T_DepartName, T.DepartTypeID as T_DepartTypeID, T.DepartTypeName as T_DepartTypeName, 
+    T.AmountOrder as T_AmountOrder, T.AmountOnTable as T_AmountOnTable, T.AmountCancel as T_AmountCancel, 
+    T.MenuPrice as T_MenuPrice, T.MenuPrice2 as T_MenuPrice2, T.SumOfConsume as T_SumOfConsume, 
+    T.SumForDiscount as T_SumForDiscount, T.SumOfService as T_SumOfService, T.SumOfCookWay as T_SumOfCookWay, 
+    T.CookWayID as T_CookWayID, T.CookWay as T_CookWay, T.CookWayPrice as T_CookWayPrice, 
+    T.MenuPart as T_MenuPart, T.Request as T_Request, T.TasteType as T_TasteType, T.CreatePersonID as T_CreatePersonID, 
+    T.CreatePerson as T_CreatePerson, T.CreateTime as T_CreateTime, T.ServingState as T_ServingState, 
+    T.IsSentMenu as T_IsSentMenu, T.IsSent as T_IsSent, T.Remark as T_Remark, T.IsSpecialPrice as T_IsSpecialPrice, 
+    T.IsDiscount as T_IsDiscount, T.DiscountRate as T_DiscountRate, T.IsPrinted as T_IsPrinted, 
+    T.PrintTime as T_PrintTime, T.IsOnTable as T_IsOnTable, T.OnTableTime as T_OnTableTime, 
+    T.MenuSetID as T_MenuSetID, T.MenuSetName as T_MenuSetName, T.MenuSetPrefix as T_MenuSetPrefix, 
+    T.MenuSetItemID as T_MenuSetItemID, T.CostPrice as T_CostPrice, T.TaxRate as T_TaxRate, 
+    T.SumOfTax as T_SumOfTax, T.IsService as T_IsService, T.IsTimeMenu as T_IsTimeMenu, 
+    T.MeasureMin as T_MeasureMin, T.StartMin as T_StartMin, T.hasPrintedTotal as T_hasPrintedTotal, 
+    T.MenuCost as T_MenuCost
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.dodonew.model.BiBillItemKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bi_BillItem T
+    where T.storeId = #{storeid,jdbcType=INTEGER}
+      and T.BillItemID = #{billitemid,jdbcType=CHAR}
+  </select>
+
+  <select id="listBillItem" parameterType="com.dodonew.model.BiBillItemKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bi_BillItem T
+    where T.storeId = #{storeid,jdbcType=INTEGER}
+    and T.BillID = #{billid,jdbcType=CHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="com.dodonew.model.BiBillItemKey">
+    delete from bi_BillItem
+    where storeId = #{storeid,jdbcType=INTEGER}
+      and BillItemID = #{billitemid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dodonew.model.BiBillItem">
+    insert into bi_BillItem (storeId, BillItemID, BillID, 
+      MenuID, MenuName, MenuUnitID, 
+      MenuUnitName, MenuTypeID, MenuTypeName, 
+      DepartID, DepartName, DepartTypeID, 
+      DepartTypeName, AmountOrder, AmountOnTable, 
+      AmountCancel, MenuPrice, MenuPrice2, 
+      SumOfConsume, SumForDiscount, SumOfService, 
+      SumOfCookWay, CookWayID, CookWay, 
+      CookWayPrice, MenuPart, Request, 
+      TasteType, CreatePersonID, CreatePerson, 
+      CreateTime, ServingState, IsSentMenu, 
+      IsSent, Remark, IsSpecialPrice, 
+      IsDiscount, DiscountRate, IsPrinted, 
+      PrintTime, IsOnTable, OnTableTime, 
+      MenuSetID, MenuSetName, MenuSetPrefix, 
+      MenuSetItemID, CostPrice, TaxRate, 
+      SumOfTax, IsService, IsTimeMenu, 
+      MeasureMin, StartMin, hasPrintedTotal, 
+      MenuCost)
+    values (#{storeid,jdbcType=INTEGER}, #{billitemid,jdbcType=CHAR}, #{billid,jdbcType=CHAR}, 
+      #{menuid,jdbcType=CHAR}, #{menuname,jdbcType=CHAR}, #{menuunitid,jdbcType=CHAR}, 
+      #{menuunitname,jdbcType=CHAR}, #{menutypeid,jdbcType=CHAR}, #{menutypename,jdbcType=CHAR}, 
+      #{departid,jdbcType=CHAR}, #{departname,jdbcType=CHAR}, #{departtypeid,jdbcType=CHAR}, 
+      #{departtypename,jdbcType=CHAR}, #{amountorder,jdbcType=REAL}, #{amountontable,jdbcType=REAL}, 
+      #{amountcancel,jdbcType=REAL}, #{menuprice,jdbcType=REAL}, #{menuprice2,jdbcType=REAL}, 
+      #{sumofconsume,jdbcType=REAL}, #{sumfordiscount,jdbcType=REAL}, #{sumofservice,jdbcType=REAL}, 
+      #{sumofcookway,jdbcType=REAL}, #{cookwayid,jdbcType=CHAR}, #{cookway,jdbcType=CHAR}, 
+      #{cookwayprice,jdbcType=REAL}, #{menupart,jdbcType=CHAR}, #{request,jdbcType=CHAR}, 
+      #{tastetype,jdbcType=CHAR}, #{createpersonid,jdbcType=CHAR}, #{createperson,jdbcType=CHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{servingstate,jdbcType=INTEGER}, #{issentmenu,jdbcType=BIT}, 
+      #{issent,jdbcType=BIT}, #{remark,jdbcType=CHAR}, #{isspecialprice,jdbcType=BIT}, 
+      #{isdiscount,jdbcType=BIT}, #{discountrate,jdbcType=REAL}, #{isprinted,jdbcType=BIT}, 
+      #{printtime,jdbcType=VARCHAR}, #{isontable,jdbcType=BIT}, #{ontabletime,jdbcType=VARCHAR}, 
+      #{menusetid,jdbcType=CHAR}, #{menusetname,jdbcType=CHAR}, #{menusetprefix,jdbcType=CHAR}, 
+      #{menusetitemid,jdbcType=CHAR}, #{costprice,jdbcType=REAL}, #{taxrate,jdbcType=REAL}, 
+      #{sumoftax,jdbcType=REAL}, #{isservice,jdbcType=INTEGER}, #{istimemenu,jdbcType=TINYINT}, 
+      #{measuremin,jdbcType=REAL}, #{startmin,jdbcType=REAL}, #{hasprintedtotal,jdbcType=INTEGER}, 
+      #{menucost,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dodonew.model.BiBillItem">
+    insert into bi_BillItem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="storeid != null">
+        storeId,
+      </if>
+      <if test="billitemid != null">
+        BillItemID,
+      </if>
+      <if test="billid != null">
+        BillID,
+      </if>
+      <if test="menuid != null">
+        MenuID,
+      </if>
+      <if test="menuname != null">
+        MenuName,
+      </if>
+      <if test="menuunitid != null">
+        MenuUnitID,
+      </if>
+      <if test="menuunitname != null">
+        MenuUnitName,
+      </if>
+      <if test="menutypeid != null">
+        MenuTypeID,
+      </if>
+      <if test="menutypename != null">
+        MenuTypeName,
+      </if>
+      <if test="departid != null">
+        DepartID,
+      </if>
+      <if test="departname != null">
+        DepartName,
+      </if>
+      <if test="departtypeid != null">
+        DepartTypeID,
+      </if>
+      <if test="departtypename != null">
+        DepartTypeName,
+      </if>
+      <if test="amountorder != null">
+        AmountOrder,
+      </if>
+      <if test="amountontable != null">
+        AmountOnTable,
+      </if>
+      <if test="amountcancel != null">
+        AmountCancel,
+      </if>
+      <if test="menuprice != null">
+        MenuPrice,
+      </if>
+      <if test="menuprice2 != null">
+        MenuPrice2,
+      </if>
+      <if test="sumofconsume != null">
+        SumOfConsume,
+      </if>
+      <if test="sumfordiscount != null">
+        SumForDiscount,
+      </if>
+      <if test="sumofservice != null">
+        SumOfService,
+      </if>
+      <if test="sumofcookway != null">
+        SumOfCookWay,
+      </if>
+      <if test="cookwayid != null">
+        CookWayID,
+      </if>
+      <if test="cookway != null">
+        CookWay,
+      </if>
+      <if test="cookwayprice != null">
+        CookWayPrice,
+      </if>
+      <if test="menupart != null">
+        MenuPart,
+      </if>
+      <if test="request != null">
+        Request,
+      </if>
+      <if test="tastetype != null">
+        TasteType,
+      </if>
+      <if test="createpersonid != null">
+        CreatePersonID,
+      </if>
+      <if test="createperson != null">
+        CreatePerson,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="servingstate != null">
+        ServingState,
+      </if>
+      <if test="issentmenu != null">
+        IsSentMenu,
+      </if>
+      <if test="issent != null">
+        IsSent,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+      <if test="isspecialprice != null">
+        IsSpecialPrice,
+      </if>
+      <if test="isdiscount != null">
+        IsDiscount,
+      </if>
+      <if test="discountrate != null">
+        DiscountRate,
+      </if>
+      <if test="isprinted != null">
+        IsPrinted,
+      </if>
+      <if test="printtime != null">
+        PrintTime,
+      </if>
+      <if test="isontable != null">
+        IsOnTable,
+      </if>
+      <if test="ontabletime != null">
+        OnTableTime,
+      </if>
+      <if test="menusetid != null">
+        MenuSetID,
+      </if>
+      <if test="menusetname != null">
+        MenuSetName,
+      </if>
+      <if test="menusetprefix != null">
+        MenuSetPrefix,
+      </if>
+      <if test="menusetitemid != null">
+        MenuSetItemID,
+      </if>
+      <if test="costprice != null">
+        CostPrice,
+      </if>
+      <if test="taxrate != null">
+        TaxRate,
+      </if>
+      <if test="sumoftax != null">
+        SumOfTax,
+      </if>
+      <if test="isservice != null">
+        IsService,
+      </if>
+      <if test="istimemenu != null">
+        IsTimeMenu,
+      </if>
+      <if test="measuremin != null">
+        MeasureMin,
+      </if>
+      <if test="startmin != null">
+        StartMin,
+      </if>
+      <if test="hasprintedtotal != null">
+        hasPrintedTotal,
+      </if>
+      <if test="menucost != null">
+        MenuCost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="storeid != null">
+        #{storeid,jdbcType=INTEGER},
+      </if>
+      <if test="billitemid != null">
+        #{billitemid,jdbcType=CHAR},
+      </if>
+      <if test="billid != null">
+        #{billid,jdbcType=CHAR},
+      </if>
+      <if test="menuid != null">
+        #{menuid,jdbcType=CHAR},
+      </if>
+      <if test="menuname != null">
+        #{menuname,jdbcType=CHAR},
+      </if>
+      <if test="menuunitid != null">
+        #{menuunitid,jdbcType=CHAR},
+      </if>
+      <if test="menuunitname != null">
+        #{menuunitname,jdbcType=CHAR},
+      </if>
+      <if test="menutypeid != null">
+        #{menutypeid,jdbcType=CHAR},
+      </if>
+      <if test="menutypename != null">
+        #{menutypename,jdbcType=CHAR},
+      </if>
+      <if test="departid != null">
+        #{departid,jdbcType=CHAR},
+      </if>
+      <if test="departname != null">
+        #{departname,jdbcType=CHAR},
+      </if>
+      <if test="departtypeid != null">
+        #{departtypeid,jdbcType=CHAR},
+      </if>
+      <if test="departtypename != null">
+        #{departtypename,jdbcType=CHAR},
+      </if>
+      <if test="amountorder != null">
+        #{amountorder,jdbcType=REAL},
+      </if>
+      <if test="amountontable != null">
+        #{amountontable,jdbcType=REAL},
+      </if>
+      <if test="amountcancel != null">
+        #{amountcancel,jdbcType=REAL},
+      </if>
+      <if test="menuprice != null">
+        #{menuprice,jdbcType=REAL},
+      </if>
+      <if test="menuprice2 != null">
+        #{menuprice2,jdbcType=REAL},
+      </if>
+      <if test="sumofconsume != null">
+        #{sumofconsume,jdbcType=REAL},
+      </if>
+      <if test="sumfordiscount != null">
+        #{sumfordiscount,jdbcType=REAL},
+      </if>
+      <if test="sumofservice != null">
+        #{sumofservice,jdbcType=REAL},
+      </if>
+      <if test="sumofcookway != null">
+        #{sumofcookway,jdbcType=REAL},
+      </if>
+      <if test="cookwayid != null">
+        #{cookwayid,jdbcType=CHAR},
+      </if>
+      <if test="cookway != null">
+        #{cookway,jdbcType=CHAR},
+      </if>
+      <if test="cookwayprice != null">
+        #{cookwayprice,jdbcType=REAL},
+      </if>
+      <if test="menupart != null">
+        #{menupart,jdbcType=CHAR},
+      </if>
+      <if test="request != null">
+        #{request,jdbcType=CHAR},
+      </if>
+      <if test="tastetype != null">
+        #{tastetype,jdbcType=CHAR},
+      </if>
+      <if test="createpersonid != null">
+        #{createpersonid,jdbcType=CHAR},
+      </if>
+      <if test="createperson != null">
+        #{createperson,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="servingstate != null">
+        #{servingstate,jdbcType=INTEGER},
+      </if>
+      <if test="issentmenu != null">
+        #{issentmenu,jdbcType=BIT},
+      </if>
+      <if test="issent != null">
+        #{issent,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=CHAR},
+      </if>
+      <if test="isspecialprice != null">
+        #{isspecialprice,jdbcType=BIT},
+      </if>
+      <if test="isdiscount != null">
+        #{isdiscount,jdbcType=BIT},
+      </if>
+      <if test="discountrate != null">
+        #{discountrate,jdbcType=REAL},
+      </if>
+      <if test="isprinted != null">
+        #{isprinted,jdbcType=BIT},
+      </if>
+      <if test="printtime != null">
+        #{printtime,jdbcType=VARCHAR},
+      </if>
+      <if test="isontable != null">
+        #{isontable,jdbcType=BIT},
+      </if>
+      <if test="ontabletime != null">
+        #{ontabletime,jdbcType=VARCHAR},
+      </if>
+      <if test="menusetid != null">
+        #{menusetid,jdbcType=CHAR},
+      </if>
+      <if test="menusetname != null">
+        #{menusetname,jdbcType=CHAR},
+      </if>
+      <if test="menusetprefix != null">
+        #{menusetprefix,jdbcType=CHAR},
+      </if>
+      <if test="menusetitemid != null">
+        #{menusetitemid,jdbcType=CHAR},
+      </if>
+      <if test="costprice != null">
+        #{costprice,jdbcType=REAL},
+      </if>
+      <if test="taxrate != null">
+        #{taxrate,jdbcType=REAL},
+      </if>
+      <if test="sumoftax != null">
+        #{sumoftax,jdbcType=REAL},
+      </if>
+      <if test="isservice != null">
+        #{isservice,jdbcType=INTEGER},
+      </if>
+      <if test="istimemenu != null">
+        #{istimemenu,jdbcType=TINYINT},
+      </if>
+      <if test="measuremin != null">
+        #{measuremin,jdbcType=REAL},
+      </if>
+      <if test="startmin != null">
+        #{startmin,jdbcType=REAL},
+      </if>
+      <if test="hasprintedtotal != null">
+        #{hasprintedtotal,jdbcType=INTEGER},
+      </if>
+      <if test="menucost != null">
+        #{menucost,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dodonew.model.BiBillItem">
+    update bi_BillItem
+    <set>
+      <if test="billid != null">
+        BillID = #{billid,jdbcType=CHAR},
+      </if>
+      <if test="menuid != null">
+        MenuID = #{menuid,jdbcType=CHAR},
+      </if>
+      <if test="menuname != null">
+        MenuName = #{menuname,jdbcType=CHAR},
+      </if>
+      <if test="menuunitid != null">
+        MenuUnitID = #{menuunitid,jdbcType=CHAR},
+      </if>
+      <if test="menuunitname != null">
+        MenuUnitName = #{menuunitname,jdbcType=CHAR},
+      </if>
+      <if test="menutypeid != null">
+        MenuTypeID = #{menutypeid,jdbcType=CHAR},
+      </if>
+      <if test="menutypename != null">
+        MenuTypeName = #{menutypename,jdbcType=CHAR},
+      </if>
+      <if test="departid != null">
+        DepartID = #{departid,jdbcType=CHAR},
+      </if>
+      <if test="departname != null">
+        DepartName = #{departname,jdbcType=CHAR},
+      </if>
+      <if test="departtypeid != null">
+        DepartTypeID = #{departtypeid,jdbcType=CHAR},
+      </if>
+      <if test="departtypename != null">
+        DepartTypeName = #{departtypename,jdbcType=CHAR},
+      </if>
+      <if test="amountorder != null">
+        AmountOrder = #{amountorder,jdbcType=REAL},
+      </if>
+      <if test="amountontable != null">
+        AmountOnTable = #{amountontable,jdbcType=REAL},
+      </if>
+      <if test="amountcancel != null">
+        AmountCancel = #{amountcancel,jdbcType=REAL},
+      </if>
+      <if test="menuprice != null">
+        MenuPrice = #{menuprice,jdbcType=REAL},
+      </if>
+      <if test="menuprice2 != null">
+        MenuPrice2 = #{menuprice2,jdbcType=REAL},
+      </if>
+      <if test="sumofconsume != null">
+        SumOfConsume = #{sumofconsume,jdbcType=REAL},
+      </if>
+      <if test="sumfordiscount != null">
+        SumForDiscount = #{sumfordiscount,jdbcType=REAL},
+      </if>
+      <if test="sumofservice != null">
+        SumOfService = #{sumofservice,jdbcType=REAL},
+      </if>
+      <if test="sumofcookway != null">
+        SumOfCookWay = #{sumofcookway,jdbcType=REAL},
+      </if>
+      <if test="cookwayid != null">
+        CookWayID = #{cookwayid,jdbcType=CHAR},
+      </if>
+      <if test="cookway != null">
+        CookWay = #{cookway,jdbcType=CHAR},
+      </if>
+      <if test="cookwayprice != null">
+        CookWayPrice = #{cookwayprice,jdbcType=REAL},
+      </if>
+      <if test="menupart != null">
+        MenuPart = #{menupart,jdbcType=CHAR},
+      </if>
+      <if test="request != null">
+        Request = #{request,jdbcType=CHAR},
+      </if>
+      <if test="tastetype != null">
+        TasteType = #{tastetype,jdbcType=CHAR},
+      </if>
+      <if test="createpersonid != null">
+        CreatePersonID = #{createpersonid,jdbcType=CHAR},
+      </if>
+      <if test="createperson != null">
+        CreatePerson = #{createperson,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="servingstate != null">
+        ServingState = #{servingstate,jdbcType=INTEGER},
+      </if>
+      <if test="issentmenu != null">
+        IsSentMenu = #{issentmenu,jdbcType=BIT},
+      </if>
+      <if test="issent != null">
+        IsSent = #{issent,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=CHAR},
+      </if>
+      <if test="isspecialprice != null">
+        IsSpecialPrice = #{isspecialprice,jdbcType=BIT},
+      </if>
+      <if test="isdiscount != null">
+        IsDiscount = #{isdiscount,jdbcType=BIT},
+      </if>
+      <if test="discountrate != null">
+        DiscountRate = #{discountrate,jdbcType=REAL},
+      </if>
+      <if test="isprinted != null">
+        IsPrinted = #{isprinted,jdbcType=BIT},
+      </if>
+      <if test="printtime != null">
+        PrintTime = #{printtime,jdbcType=VARCHAR},
+      </if>
+      <if test="isontable != null">
+        IsOnTable = #{isontable,jdbcType=BIT},
+      </if>
+      <if test="ontabletime != null">
+        OnTableTime = #{ontabletime,jdbcType=VARCHAR},
+      </if>
+      <if test="menusetid != null">
+        MenuSetID = #{menusetid,jdbcType=CHAR},
+      </if>
+      <if test="menusetname != null">
+        MenuSetName = #{menusetname,jdbcType=CHAR},
+      </if>
+      <if test="menusetprefix != null">
+        MenuSetPrefix = #{menusetprefix,jdbcType=CHAR},
+      </if>
+      <if test="menusetitemid != null">
+        MenuSetItemID = #{menusetitemid,jdbcType=CHAR},
+      </if>
+      <if test="costprice != null">
+        CostPrice = #{costprice,jdbcType=REAL},
+      </if>
+      <if test="taxrate != null">
+        TaxRate = #{taxrate,jdbcType=REAL},
+      </if>
+      <if test="sumoftax != null">
+        SumOfTax = #{sumoftax,jdbcType=REAL},
+      </if>
+      <if test="isservice != null">
+        IsService = #{isservice,jdbcType=INTEGER},
+      </if>
+      <if test="istimemenu != null">
+        IsTimeMenu = #{istimemenu,jdbcType=TINYINT},
+      </if>
+      <if test="measuremin != null">
+        MeasureMin = #{measuremin,jdbcType=REAL},
+      </if>
+      <if test="startmin != null">
+        StartMin = #{startmin,jdbcType=REAL},
+      </if>
+      <if test="hasprintedtotal != null">
+        hasPrintedTotal = #{hasprintedtotal,jdbcType=INTEGER},
+      </if>
+      <if test="menucost != null">
+        MenuCost = #{menucost,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where storeId = #{storeid,jdbcType=INTEGER}
+      and BillItemID = #{billitemid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dodonew.model.BiBillItem">
+    update bi_BillItem
+    set BillID = #{billid,jdbcType=CHAR},
+      MenuID = #{menuid,jdbcType=CHAR},
+      MenuName = #{menuname,jdbcType=CHAR},
+      MenuUnitID = #{menuunitid,jdbcType=CHAR},
+      MenuUnitName = #{menuunitname,jdbcType=CHAR},
+      MenuTypeID = #{menutypeid,jdbcType=CHAR},
+      MenuTypeName = #{menutypename,jdbcType=CHAR},
+      DepartID = #{departid,jdbcType=CHAR},
+      DepartName = #{departname,jdbcType=CHAR},
+      DepartTypeID = #{departtypeid,jdbcType=CHAR},
+      DepartTypeName = #{departtypename,jdbcType=CHAR},
+      AmountOrder = #{amountorder,jdbcType=REAL},
+      AmountOnTable = #{amountontable,jdbcType=REAL},
+      AmountCancel = #{amountcancel,jdbcType=REAL},
+      MenuPrice = #{menuprice,jdbcType=REAL},
+      MenuPrice2 = #{menuprice2,jdbcType=REAL},
+      SumOfConsume = #{sumofconsume,jdbcType=REAL},
+      SumForDiscount = #{sumfordiscount,jdbcType=REAL},
+      SumOfService = #{sumofservice,jdbcType=REAL},
+      SumOfCookWay = #{sumofcookway,jdbcType=REAL},
+      CookWayID = #{cookwayid,jdbcType=CHAR},
+      CookWay = #{cookway,jdbcType=CHAR},
+      CookWayPrice = #{cookwayprice,jdbcType=REAL},
+      MenuPart = #{menupart,jdbcType=CHAR},
+      Request = #{request,jdbcType=CHAR},
+      TasteType = #{tastetype,jdbcType=CHAR},
+      CreatePersonID = #{createpersonid,jdbcType=CHAR},
+      CreatePerson = #{createperson,jdbcType=CHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      ServingState = #{servingstate,jdbcType=INTEGER},
+      IsSentMenu = #{issentmenu,jdbcType=BIT},
+      IsSent = #{issent,jdbcType=BIT},
+      Remark = #{remark,jdbcType=CHAR},
+      IsSpecialPrice = #{isspecialprice,jdbcType=BIT},
+      IsDiscount = #{isdiscount,jdbcType=BIT},
+      DiscountRate = #{discountrate,jdbcType=REAL},
+      IsPrinted = #{isprinted,jdbcType=BIT},
+      PrintTime = #{printtime,jdbcType=VARCHAR},
+      IsOnTable = #{isontable,jdbcType=BIT},
+      OnTableTime = #{ontabletime,jdbcType=VARCHAR},
+      MenuSetID = #{menusetid,jdbcType=CHAR},
+      MenuSetName = #{menusetname,jdbcType=CHAR},
+      MenuSetPrefix = #{menusetprefix,jdbcType=CHAR},
+      MenuSetItemID = #{menusetitemid,jdbcType=CHAR},
+      CostPrice = #{costprice,jdbcType=REAL},
+      TaxRate = #{taxrate,jdbcType=REAL},
+      SumOfTax = #{sumoftax,jdbcType=REAL},
+      IsService = #{isservice,jdbcType=INTEGER},
+      IsTimeMenu = #{istimemenu,jdbcType=TINYINT},
+      MeasureMin = #{measuremin,jdbcType=REAL},
+      StartMin = #{startmin,jdbcType=REAL},
+      hasPrintedTotal = #{hasprintedtotal,jdbcType=INTEGER},
+      MenuCost = #{menucost,jdbcType=DOUBLE}
+    where storeId = #{storeid,jdbcType=INTEGER}
+      and BillItemID = #{billitemid,jdbcType=CHAR}
+  </update>
+</mapper>
